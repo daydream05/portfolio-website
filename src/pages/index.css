@@ -1,0 +1,64 @@
+.full-page {
+  height: 100vh;
+  width: 100%;
+  background-color: #383535;
+}
+
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+}
+
+.left-page {
+  height: inherit;
+  width: 100%;
+}
+
+.right-page {
+  height: inherit;
+  background-color:white;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.right-page--container {
+  padding: 30px;
+}
+
+.right-page-paragraph {
+  font-family: 'Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 400;
+  text-align: center;
+}
+
+.page-heading {
+  color: #ffff;
+}
+
+.page-subheading {
+  color: #ffff;
+}
+
+.fixed-logo {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.white-logo {
+  -webkit-clip-path: polygon(50% 0, 0 1%, 0 100%, 50% 100%);
+  clip-path: polygon(50% 0, 0 1%, 0 100%, 50% 100%); 
+}
+.black-logo {
+  
+}
