@@ -56,9 +56,11 @@
 }
 
 .white-logo {
+  width: 250px;
   -webkit-clip-path: polygon(50% 0, 0 1%, 0 100%, 50% 100%);
   clip-path: polygon(50% 0, 0 1%, 0 100%, 50% 100%); 
 }
+
 .black-logo {
-  
+  width: 250px;
 }
