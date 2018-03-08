@@ -27,6 +27,9 @@
 
 .right-page--container {
   padding: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .right-page-paragraph {
@@ -35,6 +38,7 @@
   font-style: italic;
   font-weight: 400;
   text-align: center;
+  margin-bottom: 0;
 }
 
 .page-heading {
@@ -72,4 +76,5 @@
 
 .alternate-logo {
   width: 100px;
+  margin-bottom: 0;
 }

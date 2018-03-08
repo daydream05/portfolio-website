@@ -14,9 +14,10 @@ const IndexPage = () => (
       <div className="right-page">
         <div className="right-page--container">
           <p className="right-page-paragraph">I'm currently under construction. You can come back later.</p>
+          <img src={vpLogo} alt="alternate logo" className="alternate-logo" />
         </div>
         <div className="alternate-logo__block">
-          <img src={vpLogo} alt="alternate logo" className="alternate-logo" />
+          
         </div>
       </div>
         <div className="fixed-logo">
