@@ -1,8 +1,8 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import './index.css';
-import whiteLogo from '../../public/static/SVG/logo-white.svg'
-import blackLogo from '../../public/static/SVG/logo-black.svg'
+import whiteLogo from './logo-white.svg';
+import blackLogo from './logo-black.svg';
 
 const IndexPage = () => (
   <div className="full-page">
