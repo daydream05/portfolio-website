@@ -63,3 +63,13 @@
 .black-logo {
   width: 250px;
 }
+
+.alternate-logo__block {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: 50px;
+}
+
+.alternate-logo {
+  width: 100px;
+}

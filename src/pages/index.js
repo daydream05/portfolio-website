@@ -1,8 +1,9 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import './index.css';
-import whiteLogo from './logo-white.svg';
-import blackLogo from './logo-black.svg';
+import whiteLogo from './logo-white.svg'
+import blackLogo from './logo-black.svg'
+import vpLogo from './vp-logo.svg';
 
 const IndexPage = () => (
   <div className="full-page">
@@ -13,6 +14,9 @@ const IndexPage = () => (
       <div className="right-page">
         <div className="right-page--container">
           <p className="right-page-paragraph">I'm currently under construction. You can come back later.</p>
+        </div>
+        <div className="alternate-logo__block">
+          <img src={vpLogo} alt="alternate logo" className="alternate-logo" />
         </div>
       </div>
         <div className="fixed-logo">
