@@ -8,7 +8,7 @@ const TemplateWrapper = ({ children }) => (
     <Helmet
       title="Vince Parulan, Porfolio Website"
       meta={[
-        { name: 'description', content: 'This is my portfolio website and it,s currently under construction' },
+        { name: 'description', content: "This is my portfolio website and it's currently under construction" },
         { name: 'keywords', content: 'portfolio, projects' },
       ]}
     />

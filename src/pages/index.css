@@ -1,7 +1,7 @@
 .full-page {
   height: 100vh;
   width: 100%;
-  background-color: #383535;
+  background-color: #232020;
 }
 
 .page-container {
@@ -53,9 +53,11 @@
   position: absolute;
   top: 0;
   height: 100%;
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .white-logo {
@@ -66,6 +68,7 @@
 
 .black-logo {
   width: 250px;
+  margin-bottom: 3em;
 }
 
 .alternate-logo__block {
@@ -77,4 +80,18 @@
 .alternate-logo {
   width: 100px;
   margin-bottom: 0;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.nav-link {
+  font-family: Europa;
+}
+
+.white {
+ color: white;
 }

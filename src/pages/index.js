@@ -1,8 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import './index.css';
-import whiteLogo from './logo-white.svg'
-import blackLogo from './logo-black.svg'
+import mixedLogo from './vp-logo-mixed.svg';
 import vpLogo from './vp-logo.svg';
 
 const IndexPage = () => (
@@ -21,10 +20,13 @@ const IndexPage = () => (
         </div>
       </div>
         <div className="fixed-logo">
-          <img src={blackLogo} alt="Black Logo" className="black-logo" />
-        </div>
-        <div className="fixed-logo">
-          <img src={whiteLogo} alt="White Logo" className="white-logo" />
+          <img src={mixedLogo} alt="Black and white VP Logo" className="black-logo" />
+          <div className="nav-links">
+            <Link to="/web" className="nav-link white">web</Link>
+            <Link to="/video" className="nav-link white">video</Link>
+            <Link to="/ux-ui" className="nav-link">ux/ui</Link>
+            <Link to="/photo" className="nav-link">photo</Link>
+          </div>
         </div>
     </div>
   </div>
