@@ -12,6 +12,9 @@ const TemplateWrapper = ({ children }) => (
         { name: 'keywords', content: 'portfolio, projects' },
       ]}
     />
+    <Helmet>
+      <link rel="stylesheet" href="https://use.typekit.net/sbz7hal.css" />
+    </Helmet>
     <div>
       {children()}
     </div>
