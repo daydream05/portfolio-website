@@ -23,8 +23,11 @@ const IndexPage = () => (
           <img src={mixedLogo} alt="Black and white VP Logo" className="black-logo" />
           <div className="nav-links">
             <Link to="/web" className="nav-link white">web</Link>
+            <span className="vertical-divider white">|</span>
             <Link to="/video" className="nav-link white">video</Link>
-            <Link to="/ux-ui" className="nav-link">ux/ui</Link>
+            <span className="vertical-divider white">|</span>
+            <Link to="/design" className="nav-link">ux/ui</Link>
+            <span className="vertical-divider">|</span>
             <Link to="/photo" className="nav-link">photo</Link>
           </div>
         </div>

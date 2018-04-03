@@ -1,7 +1,7 @@
-import React from 'react';
-import Link from 'gatsby-link';
+import React from 'react'
+import Link from 'gatsby-link'
 
-const PhotoPage = () => (
+const SecondPage = () => (
   <div>
     <h1>Hi from the second page</h1>
     <p>Welcome to page 2</p>
@@ -9,4 +9,4 @@ const PhotoPage = () => (
   </div>
 )
 
-export default PhotoPage;
+export default SecondPage
