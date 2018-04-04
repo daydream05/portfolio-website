@@ -7,10 +7,10 @@ const Row = styled.div`
   display: flex;
   flex-direction: row;
   line-height: 0;
-  margin-bottom: 1.5em;
+  margin-bottom: 0.5em;
 
   > * {
-    margin-right: 1.5em;
+    margin-right: 0.5em;
   }
   > *:last-child {
     margin-right: 0;

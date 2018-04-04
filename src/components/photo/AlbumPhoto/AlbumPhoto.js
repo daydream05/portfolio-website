@@ -108,7 +108,7 @@ export default AlbumPhoto;
 export const albumPhotoFragment = graphql`
   fragment AlbumPhotoFragment on ContentfulAsset {
     title
-    sizes(maxWidth: 293, maxHeight: 293) {
+    sizes(maxWidth: 293) {
       ...GatsbyContentfulSizes
     }
     fields {
