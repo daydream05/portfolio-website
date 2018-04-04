@@ -19,9 +19,8 @@ const Row = styled.div`
 const AlbumPhotoRow = (props) => (
   <Row>
     {props.photos.map(photo => {
-      console.log(photo.sizes);
       return (
-      <AlbumPhoto key={photo.id} resolutions={photo.resolutions} sizes={photo.sizes} title={photo.title}/>
+      <AlbumPhoto key={photo.id} photo={photo}/>
       );
     })}
   </Row>
@@ -30,5 +29,5 @@ const AlbumPhotoRow = (props) => (
 export default AlbumPhotoRow;
 
 AlbumPhotoRow.propTypes = {
-  photos: PropTypes.array,
+  photos: PropTypes.array.isRequired,
 }

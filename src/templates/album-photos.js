@@ -19,6 +19,7 @@ const AlbumContainer = styled.div`
   justify-content: center;
 `;
 const AlbumTemplate = ({ data }) => {
+  console.log(data);
   const albumName = data.contentfulPhotoAlbumDuplicate.albumName;
   const albumCover = data.contentfulPhotoAlbumDuplicate.albumCover.resolutions;
   const albumDescription = data.contentfulPhotoAlbumDuplicate.albumDescription.internal.content;
@@ -63,7 +64,7 @@ const AlbumTemplate = ({ data }) => {
 
   return (
     <AlbumTemplateContainer>
-      <div style={{ overflow: 'auto' }}>
+      <div style={{ overflow: 'auto'}}>
         <h1>{albumName}</h1>
         <Img resolutions={albumCover} alt={albumName}/>
         <p>{albumDescription}</p>
@@ -80,7 +81,7 @@ const AlbumTemplate = ({ data }) => {
 export default AlbumTemplate;
 
 export const pageQuery = graphql`
-  query PhotoQuery($id: String!) {
+  query AlbumPhotosQuery($id: String!) {
     contentfulPhotoAlbumDuplicate(id: { eq: $id }) {
       albumName
       albumCover {
@@ -95,12 +96,7 @@ export const pageQuery = graphql`
         id
       }
       albumPhotos {
-        title
-        sizes(maxWidth: 293, maxHeight: 293) {
-          ...GatsbyContentfulSizes
-        }
-        id
-        description
+        ...AlbumPhotoFragment
       }
       id
     }

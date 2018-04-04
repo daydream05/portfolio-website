@@ -12,9 +12,10 @@ const path = require(`path`);
 const slash = require(`slash`);
 const slug = require(`slug`);
 
-// This for adding a slug node to an album page
+
 exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
   const { createNodeField } = boundActionCreators;
+  // This for adding a slug node to an album page
   if (node.internal.type === `ContentfulPhotoAlbumDuplicate`) {
     const pageSlug = `/photo/${node.slug}/`;
 
@@ -24,13 +25,26 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
       value: pageSlug,
     })
   }
+
+// This for adding a slug node to a photo page
+  if (node.internal.type === `ContentfulAsset`) {
+    const pageSlug = `/${slug(`${node.title.toLowerCase()} ${node.id}`)}/`;
+
+    createNodeField({
+      node,
+      name: `slug`,
+      value: pageSlug,
+    })
+
+    console.log(node.fields);
+  }
 }
 
-// This for creating an album page
 exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators;
 
   return new Promise((resolve, reject) => {
+    // This for creating an album page
     graphql(
       `{
         allContentfulPhotoAlbumDuplicate {
@@ -66,6 +80,40 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             slug: edge.node.fields.slug,
           }
         })
+      })
+    }).then(() => {
+      // This for creating a photo page
+      graphql(
+        `{
+          allContentfulAsset {
+            edges {
+              node {
+                id
+                title
+                fields {
+                  slug
+                }
+              }
+            }
+          }
+        }`
+      ).then(result => {
+        if (result.errors) {
+          reject(result.errors);
+        }
+
+        const template = path.resolve('./src/templates/photo-template.js');
+        _.each(result.data.allContentfulAsset.edges, edge => {
+          console.log(edge.node);
+          createPage({
+            path: edge.node.fields.slug,
+            component: slash(template),
+            context: {
+              id: edge.node.id,
+              slug: edge.node.fields.slug,
+            }
+          });
+        });
       })
     })
     resolve();
