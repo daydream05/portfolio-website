@@ -29,6 +29,7 @@ class AlbumPhoto extends Component {
     } = this.props.photo;
 
     const { slug } = fields;
+    console.log(this.props.photo.title);
     return (
       <Link
         to={slug}
@@ -107,8 +108,7 @@ export default AlbumPhoto;
 
 export const albumPhotoFragment = graphql`
   fragment AlbumPhotoFragment on ContentfulAsset {
-    title
-    sizes(maxWidth: 293) {
+    sizes(maxWidth: 293, maxHeight: 293) {
       ...GatsbyContentfulSizes
     }
     fields {
@@ -116,5 +116,6 @@ export const albumPhotoFragment = graphql`
     }
     id
     description
+    title
   }
 `;
