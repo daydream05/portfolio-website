@@ -72,8 +72,6 @@ class AlbumTemplate extends Component {
       );
     }
 
-    let isModal = true;
-
     return (
       <AlbumTemplateContainer>
         <div style={{ overflow: 'auto'}}>

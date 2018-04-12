@@ -51,7 +51,12 @@ class PostsModal extends Component  {
       } else {
         nextPost = posts[currentIndex + 1]
       }
-      navigateTo(`${nextPost.fields.slug}`);
+      navigateTo({
+        pathname: `${nextPost.fields.slug}`,
+        state: {
+          isInModal: true,
+        }
+      });
     }
   }
 
@@ -72,7 +77,12 @@ class PostsModal extends Component  {
         // goes to the previous slot on the array
         previousPost = posts[currentIndex - 1]
       }
-      navigateTo(previousPost.fields.slug);
+      navigateTo({
+        pathname: previousPost.fields.slug,
+        state: {
+          isInModal: true,
+        },
+      });
     }
   }
 
@@ -80,7 +90,7 @@ class PostsModal extends Component  {
     return (
       <Modal
         isOpen={this.props.isOpen}
-        onRequestClose={() => navigateTo(`/`)}
+        onRequestClose={() => navigateTo(`/photo/instagram-photos/`)}
         style={{
           overlay: {
             position: `fixed`,
@@ -106,7 +116,7 @@ class PostsModal extends Component  {
         contentLabel="Modal"
       >
         <div
-          onClick={() => navigateTo(`/`)}
+          onClick={() => navigateTo(`/photo/instagram-photos/`)}
           style={{
             display: `flex`,
             position: `relative`,
@@ -142,11 +152,11 @@ class PostsModal extends Component  {
                 color: `rgba(255,255,255,0.7)`,
                 userSelect: `none`,
               }}
-              onClick={e => this.previous(e)}
+              onClick={e => this.next(e)}
             />
           </div>
           <Close
-            onClick={() => navigateTo(`/`)}
+            onClick={() => navigateTo(`/photo/instagram-photos/`)}
             css={{
               cursor: `pointer`,
               color: `rgba(255,255,255,0.8)`,

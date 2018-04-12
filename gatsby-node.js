@@ -104,13 +104,14 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
         const template = path.resolve('./src/templates/photo-template.js');
         _.each(result.data.allContentfulAsset.edges, edge => {
-          console.log(edge.node);
+          const pageSlug = edge.node.fields.slug;
+          
           createPage({
-            path: edge.node.fields.slug,
+            path: pageSlug,
             component: slash(template),
             context: {
               id: edge.node.id,
-              slug: edge.node.fields.slug,
+              slug: pageSlug,
             }
           });
         });

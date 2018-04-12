@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Album from '../Album/Album';
 import Link from 'gatsby-link';
-import slug from 'slug';
 
 const FlexRow = styled.div`
   display: flex;

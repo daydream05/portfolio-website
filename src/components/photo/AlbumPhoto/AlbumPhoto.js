@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
-import Link from "gatsby-link";
+import Link, { navigateTo } from "gatsby-link";
 import styled from 'styled-components';
 import HeartIcon from "react-icons/lib/fa/heart";
 
@@ -29,16 +29,23 @@ class AlbumPhoto extends Component {
     } = this.props.photo;
 
     const { slug } = fields;
-    console.log(this.props.photo.title);
     return (
       <Link
-        to={slug}
         style = {{
           display: `block`,
           flex: `100%`,
           width: `100%`,
           maxWidth: 293,
           position: `relative`,
+        }}
+        onClick={(e) => { 
+          e.preventDefault();
+          navigateTo({
+            pathname: slug,
+            state: { 
+              isInModal: true,
+            },
+          });
         }}
         onTouchStart={() => (touched = true)}
         onMouseEnter={() => {
