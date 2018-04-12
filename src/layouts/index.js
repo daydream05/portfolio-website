@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import normalize from 'normalize.css';
 import Modal from '../components/Modal/Modal';
+import Navbar from '../components/Navbar/Navbar';
 
 class TemplateWrapper extends Component {
   static childContextTypes = {
@@ -97,6 +98,7 @@ class TemplateWrapper extends Component {
           <link rel="stylesheet" href="https://use.typekit.net/sbz7hal.css" />
         </Helmet>
         <div>
+          <Navbar />
           {
             // If the modal is turned on, we want to show the background
             // which is the children of this layout to be the parent of where the pictures come from
