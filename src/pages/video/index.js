@@ -1,12 +1,28 @@
-import React from 'react'
-import Link from 'gatsby-link'
+import React from 'react';
+import Link from 'gatsby-link';
+import styled from 'styled-components';
+import { Banner } from '../../components/Banner/Banner';
+import VideoItemList from '../../components/video/VideoItemList/VideoItemList';
 
-const SecondPage = () => (
+const SecondPage = ({ data }) => (
   <div>
-    <h1>Hi from the video page</h1>
-    <p>Welcome to video page</p>
+    <Banner title="Videos"/>
+    <VideoItemList videos={data.allContentfulVideo.edges} />
     <Link to="/">Go back to the homepage</Link>
   </div>
-)
+);
+
+export const VideoPageQuery = graphql`
+  query VideoListQuery {
+    allContentfulVideo {
+      edges {
+        node {
+          ...VideoItemListFragment
+        }
+      }
+    }
+  }
+`
+
 
 export default SecondPage;
