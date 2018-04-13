@@ -38,14 +38,11 @@ class AlbumPhoto extends Component {
           maxWidth: 293,
           position: `relative`,
         }}
-        onClick={(e) => { 
-          e.preventDefault();
-          navigateTo({
-            pathname: slug,
-            state: { 
-              isInModal: true,
-            },
-          });
+        to={{
+          pathname: slug,
+          state: { 
+            isInModal: true,
+          }
         }}
         onTouchStart={() => (touched = true)}
         onMouseEnter={() => {
