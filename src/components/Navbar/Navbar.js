@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import NavbarLinks from './NavbarLinks';
 
-const Nav = styled.div `
+const Nav = styled.nav`
   width: 100%;
   position: absolute;
 `;
