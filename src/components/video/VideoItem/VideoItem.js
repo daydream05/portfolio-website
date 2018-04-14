@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const VideoImageContainer = styled.article`
   min-height: 400px;
   background-color: rgba(0,0,0, 0.75);
-  background-image: ${ props => `url(${props.image})`};
+  background-image: ${props => `url(${props.image})`};
   background-position: center center;
   background-size: cover;
   display: flex;
@@ -14,6 +14,22 @@ const VideoImageContainer = styled.article`
   align-items: center;
   ::after {
     background-color: rgba(0,0,0. 0.15);
+  }
+`;
+
+const VideoImageOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(80,80,80);
+  opacity: 0.45;
+  transition-duration: 0.6s;
+  display: block;
+
+  :hover {
+    opacity: 0;
   }
 `;
 
@@ -41,12 +57,17 @@ const Description = styled.p `
 `;
 
 const VideoItem = (props) => (
-  <VideoImageContainer image={props.backgroundImageSrc}>
-    <Content>
-      <Header>{props.title}</Header>
-      <Description>{props.description}</Description>
-    </Content>
-  </VideoImageContainer>
+  <div>
+    <VideoImageContainer image={props.backgroundImageSrc}>
+      <div>
+        <Content>
+          <Header>{props.title}</Header>
+          <Description>{props.description}</Description>
+        </Content>
+        <VideoImageOverlay />
+      </div>
+    </VideoImageContainer>
+  </div>
 );
 
 VideoItem.propTypes = {
