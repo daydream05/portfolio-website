@@ -13,23 +13,15 @@ const List = styled.ul`
 `;
 
 const VideoItemList = ({ videos }) => {
-  const displayVideos = () => {
-    videos.map((video) => {
-      return (
-      <li key={video.id}>
-        <VideoItem />
-      </li>
-      );
-    })
-  }
 
   return (
     <List>
       {videos.map((video) => {
+        console.log(video);
         return ( 
           <ListItem key={video.node.id}>
           <Link
-            to='first-video'
+            to={video.node.fields.url}
           >
             <VideoItem 
               title={video.node.title} 
@@ -48,14 +40,17 @@ export default VideoItemList;
 
 export const VideoItemListFragment = graphql`
   fragment VideoItemListFragment on ContentfulVideo {
-    id
-    title
-    shortDescription
     coverImage {
       sizes(maxWidth: 1440) {
         ...GatsbyContentfulSizes
       }
     }
+    id
+    fields {
+      url
+    }
+    shortDescription
+    title
   }
 `;
 

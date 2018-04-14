@@ -38,6 +38,17 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
 
     console.log(node.fields);
   }
+
+  // This is for adding a client url from the slug field
+  if (node.internal.type === `ContentfulVideo`) {
+    const pageUrl = `/video/${node.slug}/`;
+
+    createNodeField({
+      node,
+      name: `url`,
+      value: pageUrl,
+    });
+  }
 }
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
@@ -116,6 +127,40 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           });
         });
       })
+    }).then(() => {
+      // This is for creating a video page
+      graphql(
+        `{
+          allContentfulVideo {
+            edges {
+              node {
+                id
+                fields {
+                  url
+                }
+              }
+            }
+          }
+        }`
+      ).then(result => {
+        if (result.errors) {
+          reject(result.errors);
+        }
+
+        const template = path.resolve('./src/templates/video-template.js');
+        _.each(result.data.allContentfulVideo.edges, edge => {
+          const pageUrl = edge.node.fields.url;
+
+          createPage({
+            path: pageUrl,
+            component: slash(template),
+            context: {
+              id: edge.node.id,
+              url: pageUrl,
+            }
+          });
+        });
+      });
     })
     resolve();
   });

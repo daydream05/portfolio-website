@@ -43,14 +43,18 @@ const Title = styled.h1`
  * TODO: 
  * Set innerHTML instead of passing a text props.
  */
-const Article = ({ article }) => (
+const Article = ({ 
+    html,
+    title,
+    shortDescription
+  }) => (
   <ArticleContainer>
     <StyledArticle>
       <Header>
-        <Title>{article.title}</Title>
-        <Description>{article.description}</Description>
+        <Title>{title}</Title>
+        <Description>{shortDescription}</Description>
       </Header>
-      <p>{article.content}</p>
+      <div dangerouslySetInnerHTML={{ __html: html }} />
     </StyledArticle>
   </ArticleContainer>
 );
