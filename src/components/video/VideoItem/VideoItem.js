@@ -9,6 +9,7 @@ const VideoImageContainer = styled.article`
   background-position: center center;
   background-size: cover;
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -39,9 +40,10 @@ const Content = styled.div`
   justify-content: center;
   align-items: center;
   max-width: 400px;
+  z-index: 1;
 `;
 
-const Header = styled.header `
+const Header = styled.header`
   font-size: 64px;
   font-family: Europa;
   font-style: italic;
@@ -49,7 +51,7 @@ const Header = styled.header `
   color: #fff;
 `;
 
-const Description = styled.p `
+const Description = styled.p`
   font-size: 18px;
   font-family: Europa;
   text-align: center;
@@ -59,13 +61,11 @@ const Description = styled.p `
 const VideoItem = (props) => (
   <div>
     <VideoImageContainer image={props.backgroundImageSrc}>
-      <div>
         <Content>
           <Header>{props.title}</Header>
           <Description>{props.description}</Description>
         </Content>
         <VideoImageOverlay />
-      </div>
     </VideoImageContainer>
   </div>
 );

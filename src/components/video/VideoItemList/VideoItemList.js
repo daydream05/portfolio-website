@@ -8,6 +8,10 @@ const ListItem = styled.li`
   margin: 30px 0;
 `;
 
+const NoDecorationLink = styled(Link)`
+  text-decoration: none;
+`;
+
 const List = styled.ul`
   padding: 0;
 `;
@@ -20,7 +24,7 @@ const VideoItemList = ({ videos }) => {
         console.log(video);
         return ( 
           <ListItem key={video.node.id}>
-          <Link
+          <NoDecorationLink
             to={video.node.fields.url}
           >
             <VideoItem 
@@ -28,7 +32,7 @@ const VideoItemList = ({ videos }) => {
               description={video.node.shortDescription}
               backgroundImageSrc={video.node.coverImage.sizes.src}
             />
-          </Link>
+          </NoDecorationLink>
           </ListItem>
         )
       })}
