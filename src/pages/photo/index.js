@@ -1,15 +1,13 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import AlbumList from '../../components/photo/AlbumList/AlbumList';
+import { Banner } from '../../components/Banner/Banner';
 
 const PhotoPage = ({ data }) => {
   console.log(data);
   return (
     <div>
-      <h1>Hi this is the Photo page
-      </h1>
-      <p>Welcome to photo page</p>
-      <Link to="/">Go back to home</Link>
+        <Banner title="Photos" />
        <AlbumList albums={data.allContentfulPhotoAlbumDuplicate.edges} />
     </div>
   );

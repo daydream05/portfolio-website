@@ -5,7 +5,7 @@ const BannerStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  height: 155px;
+  min-height: 105px;
 `;
 
 const BannerTitle = styled.h1`

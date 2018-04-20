@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import video from '../../../public/purple-bag.mp4';
+import { Banner } from '../../components/Banner/Banner';
 
 const CardContainer = styled.div`
   color: rgba(0, 0, 0, .75);
@@ -36,18 +37,21 @@ const CardContent = styled.div`
 `;
 
 const Card = () => (
-  <CardContainer>
-    <CardImageBlock />
-    <CardContent>
-      <CardTitle>Insert Title Here</CardTitle>
-      <CardDescription>
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod 
-        tincidunt ut laoreet dolore magna 
-        aliquam erat volutpat.
-      </CardDescription>
-    </CardContent>
-    <video src={video} preload="auto" loop autoPlay />
-  </CardContainer>
+  <div>
+    <Banner title="Blog" />
+    <CardContainer>
+      <CardImageBlock />
+      <CardContent>
+        <CardTitle>Insert Title Here</CardTitle>
+        <CardDescription>
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod 
+          tincidunt ut laoreet dolore magna 
+          aliquam erat volutpat.
+        </CardDescription>
+      </CardContent>
+      <video src={video} preload="auto" loop autoPlay />
+    </CardContainer>
+  </div>
 );
 
 export default Card;

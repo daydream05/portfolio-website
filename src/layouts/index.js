@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import styled from 'styled-components';
 import normalize from 'normalize.css';
 import Modal from '../components/Modal/Modal';
 import Navbar from '../components/Navbar/Navbar';
+
+
+
+const LayoutPage = styled.div`
+  overflow: hidden;
+`;
+
+// So our page is always below our nav
+const PageContent = styled.div`
+  margin-top: 50px;
+`;
 
 class TemplateWrapper extends Component {
   static childContextTypes = {
@@ -97,18 +109,20 @@ class TemplateWrapper extends Component {
         <Helmet>
           <link rel="stylesheet" href="https://use.typekit.net/sbz7hal.css" />
         </Helmet>
-        <div>
+        <LayoutPage>
           <Navbar />
-          {
-            // If the modal is turned on, we want to show the background
-            // which is the children of this layout to be the parent of where the pictures come from
-            isModal
-            ? this.props.children({
-                ...this.props,
-                location: { pathname: `/photo/instagram-photos/` },
-              })
-            : this.props.children()}
-        </div>
+          <PageContent>
+            {
+              // If the modal is turned on, we want to show the background
+              // which is the children of this layout to be the parent of where the pictures come from
+              isModal
+              ? this.props.children({
+                  ...this.props,
+                  location: { pathname: `/photo/instagram-photos/` },
+                })
+              : this.props.children()}
+            </PageContent>
+        </LayoutPage>
         <div>
           {isModal && (
             <Modal isOpen={true} posts={this.posts} location={this.props.location}>

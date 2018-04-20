@@ -4,7 +4,10 @@ import NavbarLinks from './NavbarLinks';
 
 const Nav = styled.nav`
   width: 100%;
-  position: absolute;
+  position: fixed;
+  z-index: 1;
+  background-color: white;
+  height: 50px;
 `;
 
 const Navbar = () => (
