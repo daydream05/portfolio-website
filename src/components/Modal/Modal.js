@@ -9,12 +9,6 @@ import PropTypes from "prop-types";
 import { navigateTo } from "gatsby-link";
 
 class PostsModal extends Component  {
-  static propTypes = {
-    isOpen: React.PropTypes.bool,
-    location: React.PropTypes.object.isRequired,
-    posts: React.PropTypes.array.isRequired,
-  }
-
   componentDidMount() {
     mousetrap.bind(`left`, () => this.previous());
     mousetrap.bind(`right`, () => this.next());
