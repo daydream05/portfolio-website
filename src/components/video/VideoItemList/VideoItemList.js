@@ -16,7 +16,7 @@ const List = styled.ul`
   padding: 0;
 `;
 
-const VideoItemList = ({ videos }) => {
+const VideoItemList = ({ videos, parentUrl }) => {
 
   return (
     <List>
@@ -25,7 +25,13 @@ const VideoItemList = ({ videos }) => {
         return ( 
           <ListItem key={video.node.id}>
           <NoDecorationLink
-            to={video.node.fields.url}
+            to={{
+              pathname: video.node.fields.url,
+              state: {
+                isInModal: true,
+                parentUrl: parentUrl,
+              }
+            }}
           >
             <VideoItem 
               title={video.node.title} 

@@ -7,20 +7,19 @@ const ArticleContainer = styled.div`
   max-width: 906px;
   margin-left: auto;
   margin-right: auto;
+  color: #fff;
+  background-color: white;
 `;
 
 const StyledArticle = styled.article`
-  font-size: 16px;
-  font-family: Europa;
   color: rgba(0, 0, 0, 0.75);
+  overflow: hidden;
 `;
 
 const Description = styled.p`
-  font-size: 18px;
   text-align: center;
   max-width: 400px;
   margin: 0;
-  font-family: Europa;
 `;
 
 const Header = styled.header`
@@ -32,7 +31,6 @@ const Header = styled.header`
 `;
 
 const Title = styled.h1`
-  font-family: Europa;
   font-size: 64px;
   color: #4A4A4A;
   margin: 32px 0 16px;

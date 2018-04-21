@@ -3,12 +3,15 @@ import Link from 'gatsby-link';
 import AlbumList from '../../components/photo/AlbumList/AlbumList';
 import { Banner } from '../../components/Banner/Banner';
 
-const PhotoPage = ({ data }) => {
+const PhotoPage = ({ data, location }) => {
   console.log(data);
   return (
     <div>
         <Banner title="Photos" />
-       <AlbumList albums={data.allContentfulPhotoAlbumDuplicate.edges} />
+       <AlbumList 
+          albums={data.allContentfulPhotoAlbumDuplicate.edges}
+          parentUrl={location.pathname}
+       />
     </div>
   );
 }

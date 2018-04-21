@@ -42,6 +42,7 @@ class AlbumPhoto extends Component {
           pathname: slug,
           state: { 
             isInModal: true,
+            parentUrl: this.props.parentUrl,
           }
         }}
         onTouchStart={() => (touched = true)}

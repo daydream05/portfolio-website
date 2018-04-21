@@ -44,16 +44,16 @@ const Content = styled.div`
 `;
 
 const Header = styled.header`
-  font-size: 64px;
-  font-family: Europa;
-  font-style: italic;
-  font-weight: 700;
-  color: #fff;
+  margin-bottom: 16px;
+`;
+
+const HeaderTitle = styled.h1`
+   font-style: italic;
+   color: #fff;
+   font-size: 64px;
 `;
 
 const Description = styled.p`
-  font-size: 18px;
-  font-family: Europa;
   text-align: center;
   color: #fff;
 `;
@@ -62,7 +62,9 @@ const VideoItem = (props) => (
   <div>
     <VideoImageContainer image={props.backgroundImageSrc}>
         <Content>
-          <Header>{props.title}</Header>
+          <Header>
+            <HeaderTitle>{props.title}</HeaderTitle>
+          </Header>
           <Description>{props.description}</Description>
         </Content>
         <VideoImageOverlay />

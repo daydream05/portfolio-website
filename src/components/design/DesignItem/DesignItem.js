@@ -45,15 +45,10 @@ const Content = styled.div `
 `;
 
 const Title = styled.h3`
-  font-size: 64px;
   margin: 0 20px 10px;
-  font-family: Europa;
-  font-weight: 700;
 `;
 
 const Description = styled.p `
-  font-size: 18px;
-  font-family: Europa;
   text-align: center;
 `;
 
@@ -62,7 +57,6 @@ const TagDivider = styled.span`
 `;
 
 const Tags = styled.div`
-  font-family: Europa;
 `;
 
 const Card = (props) => (

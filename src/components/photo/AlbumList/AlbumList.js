@@ -23,7 +23,10 @@ const AlbumList = (props) => {
             to={albumLink}
             key={album.node.id}
           >
-            <Album description={albumDescription} image={albumCover} />
+            <Album 
+              description={albumDescription} 
+              image={albumCover} 
+            />
           </Link>
         );
       })}

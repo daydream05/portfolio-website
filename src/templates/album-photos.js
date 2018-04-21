@@ -68,7 +68,7 @@ class AlbumTemplate extends Component {
     const returnRow = (photos, count) => {
       console.log(photos, count);
       return (
-        <AlbumPhotoRow photos={photos} key={count}/>
+        <AlbumPhotoRow photos={photos} key={count} parentUrl={this.props.location.pathname}/>
       );
     }
 

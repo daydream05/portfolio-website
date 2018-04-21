@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import normalize from 'normalize.css';
 import Modal from '../components/Modal/Modal';
 import Navbar from '../components/Navbar/Navbar';
+import './index.css';
 
 
 
@@ -59,7 +60,7 @@ class TemplateWrapper extends Component {
 
       if (
         nextProps.location.state.isInModal &&
-        this.windowWidth > 750
+        this.windowWidth > 812
       ) 
       {
         console.log('hello world');
@@ -118,14 +119,19 @@ class TemplateWrapper extends Component {
               isModal
               ? this.props.children({
                   ...this.props,
-                  location: { pathname: `/photo/instagram-photos/` },
+                  location: { pathname: this.props.location.state.parentUrl }
                 })
               : this.props.children()}
             </PageContent>
         </LayoutPage>
         <div>
           {isModal && (
-            <Modal isOpen={true} posts={this.posts} location={this.props.location}>
+            <Modal 
+              isOpen={true} 
+              posts={this.posts} 
+              location={this.props.location} 
+              parentUrl={this.props.location.state.parentUrl}
+            >
               {this.props.children}
             </Modal>
           )}

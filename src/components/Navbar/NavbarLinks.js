@@ -11,8 +11,6 @@ const RowList = styled.ul`
 const NavbarItem = styled.li`
   list-style-type: none;
   color: #979797;
-  font-family: Europa;
-  font-weight: 700;
 
   a {
     text-decoration: none;

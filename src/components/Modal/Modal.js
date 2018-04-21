@@ -1,12 +1,24 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import Modal from "react-modal";
+import styled from 'styled-components';
 import CaretRight from "react-icons/lib/fa/caret-right";
 import CaretLeft from "react-icons/lib/fa/caret-left";
 import Close from "react-icons/lib/md/close";
 import findIndex from "lodash/findIndex";
 import mousetrap from "mousetrap";
-import PropTypes from "prop-types";
 import { navigateTo } from "gatsby-link";
+
+
+const ContentContainer = styled.div`
+  max-width: 95%;
+  width: 1200px;
+  height: 100%;
+  overflow-y: auto;
+  transform: translate3d(0px, 0px, 0px);
+  contain: layout style size;
+  margin: 0px auto;
+`;
 
 class PostsModal extends Component  {
   componentDidMount() {
@@ -81,10 +93,11 @@ class PostsModal extends Component  {
   }
 
   render() {
+    console.log(this.props.posts);
     return (
       <Modal
         isOpen={this.props.isOpen}
-        onRequestClose={() => navigateTo(`/photo/instagram-photos/`)}
+        onRequestClose={() => navigateTo(this.props.parentUrl)}
         style={{
           overlay: {
             position: `fixed`,
@@ -93,6 +106,7 @@ class PostsModal extends Component  {
             right: 0,
             bottom: 0,
             backgroundColor: `rgba(0, 0, 0, 0.75)`,
+            zIndex: 3,
           },
           content: {
             position: `absolute`,
@@ -110,10 +124,11 @@ class PostsModal extends Component  {
         contentLabel="Modal"
       >
         <div
-          onClick={() => navigateTo(`/photo/instagram-photos/`)}
+          onClick={() => navigateTo(this.props.parentUrl)}
           style={{
             display: `flex`,
             position: `relative`,
+            width: `100%`,
             height: `100vh`,
           }}
         >
@@ -122,9 +137,9 @@ class PostsModal extends Component  {
               display: `flex`,
               alignItems: `center`,
               justifyItems: `center`,
-              maxWidth: `975px`, // Gets it right around Instagram's maxWidth.
               margin: `auto`,
-              width: `100%`,
+              width: `1200px`,
+              height: `100%`,
             }}
           >
             <CaretLeft
@@ -136,9 +151,13 @@ class PostsModal extends Component  {
               }}
               onClick={e => this.previous(e)}
             />
-            {this.props.children({
-              location: { pathname: this.props.location.pathname },
-            })}
+            <ContentContainer>
+              <div>
+                {this.props.children({
+                  location: { pathname: this.props.location.pathname },
+                })}
+              </div>
+            </ContentContainer>
             <CaretRight
               style={{
                 cursor: `pointer`,
@@ -150,7 +169,7 @@ class PostsModal extends Component  {
             />
           </div>
           <Close
-            onClick={() => navigateTo(`/photo/instagram-photos/`)}
+            onClick={() => navigateTo(this.props.parentUrl)}
             css={{
               cursor: `pointer`,
               color: `rgba(255,255,255,0.8)`,
@@ -165,6 +184,12 @@ class PostsModal extends Component  {
 }
 
 export default PostsModal;
+
+PostsModal.propTypes = {
+  parentPagePath: PropTypes.string.isRequired,
+  location: PropTypes.object.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+}
 
 export const postsModalFragment = graphql`
   fragment PostsModalFragment on ContentfulAsset {

@@ -17,6 +17,11 @@ const VideoBanner = styled.div`
   height: 100%;
 `;
 
+const Page = styled.div`
+  width: 100%;
+  background-color: white;
+`;
+
 const VideoTemplate = ({ data }) => {
   const video = data.contentfulVideo;
 
@@ -28,7 +33,7 @@ const VideoTemplate = ({ data }) => {
   } = video;
 
   return (
-    <div>
+    <Page>
       <VideoSection>
         <VideoBanner>
           <ReactPlayer
@@ -46,7 +51,7 @@ const VideoTemplate = ({ data }) => {
           shortDescription={shortDescription}
         />
       </section>
-    </div>
+    </Page>
   );
 };
 

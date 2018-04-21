@@ -20,7 +20,7 @@ const AlbumPhotoRow = (props) => (
   <Row>
     {props.photos.map(photo => {
       return (
-      <AlbumPhoto key={photo.id} photo={photo}/>
+      <AlbumPhoto key={photo.id} photo={photo} parentUrl={props.parentUrl}/>
       );
     })}
   </Row>

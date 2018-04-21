@@ -11,7 +11,6 @@ const BannerStyle = styled.div`
 const BannerTitle = styled.h1`
   font-size: 32px;
   font-weight: 700;
-  font-family: Europa;
   text-transform: uppercase;
 `;
 
