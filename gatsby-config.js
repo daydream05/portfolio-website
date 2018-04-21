@@ -20,7 +20,6 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-react-next`,
-    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {
