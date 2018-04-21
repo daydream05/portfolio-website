@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import video from '../../../public/purple-bag.mp4';
 import { Banner } from '../../components/Banner/Banner';
 
 const CardContainer = styled.div`
@@ -46,7 +45,6 @@ const Card = () => (
     <Banner title="Blog" />
     <CardContainer>
       <CardImageBlock>
-        <video src={video} preload="auto" loop autoPlay />
       </CardImageBlock>
       <CardContent>
         <CardTitle>Insert Title Here</CardTitle>
