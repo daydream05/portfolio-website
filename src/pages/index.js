@@ -9,7 +9,7 @@ import vpLogo from './vp-logo.svg';
 const Page = styled.div`
   height: 100vh;
   padding-left: 300px;
-  padding-top: 300px;
+  padding-top: 150px;
   display: flex;
   flex-direction: column;
 `;
@@ -65,7 +65,7 @@ class IndexPage extends Component {
                 <Intro> I'm Vince.</Intro>
                 <Typist.Delay ms={1500} />
                 <br/>
-                <Intro>I'm a creative developer,</Intro>
+                <Intro>I'm a full-stack developer,</Intro>
                 <Typist.Delay ms={1500} />
                 <br/>
                 <Intro>And I build websites</Intro>
