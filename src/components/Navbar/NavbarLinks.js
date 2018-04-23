@@ -6,13 +6,17 @@ const RowList = styled.ul`
   display: flex;
   justify-content: space-around;
   padding: 0;
+  margin: 0;
+  width: 100%;
 `;
 
 const NavbarItem = styled.li`
   list-style-type: none;
   color: #979797;
+  margin: 0;
 
   a {
+    font-weight: 700;
     text-decoration: none;
 
     :visited {

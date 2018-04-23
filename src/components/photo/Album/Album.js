@@ -6,7 +6,6 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   width: 300px;
-  height: 300px;
 `;
 
 const CardImage = styled.img`
@@ -14,10 +13,15 @@ const CardImage = styled.img`
   height: auto;
   object-fit: cover;
   object-position: center;
+  margin: 0;
 `;
 
 const CardDescription = styled.p`
   padding: 20px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
 `;
 const Album = (props) => (
   <Card>
