@@ -31,6 +31,7 @@ class TemplateWrapper extends Component {
       // state to be in a modal. We can do do this through location object
       // that is passed down to a Gatsby Link or navigateTo. 
       this.inModal = props.location.state.isInModal
+      this.parentUrl = props.location.state.parentUrl
     }
   }
 
@@ -119,7 +120,7 @@ class TemplateWrapper extends Component {
               isModal
               ? this.props.children({
                   ...this.props,
-                  location: { pathname: this.props.location.state.parentUrl }
+                  location: { pathname: this.props.location.state.parentUrl },
                 })
               : this.props.children()}
             </PageContent>
@@ -129,7 +130,7 @@ class TemplateWrapper extends Component {
             <Modal 
               isOpen={true} 
               posts={this.posts} 
-              location={this.props.location} 
+              location={this.props.location}
               parentUrl={this.props.location.state.parentUrl}
             >
               {this.props.children}

@@ -97,7 +97,7 @@ class PostsModal extends Component  {
     return (
       <Modal
         isOpen={this.props.isOpen}
-        onRequestClose={() => navigateTo(this.props.parentUrl)}
+        onRequestClose={() => navigateTo('/photo/instagram-photos/')}
         style={{
           overlay: {
             position: `fixed`,
@@ -124,7 +124,7 @@ class PostsModal extends Component  {
         contentLabel="Modal"
       >
         <div
-          onClick={() => navigateTo(this.props.parentUrl)}
+          onClick={() => navigateTo('/photo/instagram-photos/')}
           style={{
             display: `flex`,
             position: `relative`,
@@ -169,7 +169,7 @@ class PostsModal extends Component  {
             />
           </div>
           <Close
-            onClick={() => navigateTo(this.props.parentUrl)}
+            onClick={() => navigateTo('/photo/instagram-photos/')}
             css={{
               cursor: `pointer`,
               color: `rgba(255,255,255,0.8)`,

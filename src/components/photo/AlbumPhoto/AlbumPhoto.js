@@ -42,7 +42,7 @@ class AlbumPhoto extends Component {
           pathname: slug,
           state: { 
             isInModal: true,
-            parentUrl: this.props.parentUrl,
+            parentUrl: `/photo/instagram-photos/`,
           }
         }}
         onTouchStart={() => (touched = true)}

@@ -1,16 +1,14 @@
 import React from 'react';
-import Link from 'gatsby-link';
 import AlbumList from '../../components/photo/AlbumList/AlbumList';
 import { Banner } from '../../components/Banner/Banner';
 
-const PhotoPage = ({ data, location }) => {
+const PhotoPage = ({ data }) => {
   console.log(data);
   return (
     <div>
         <Banner title="Photos" />
        <AlbumList 
           albums={data.allContentfulPhotoAlbumDuplicate.edges}
-          parentUrl={location.pathname}
        />
     </div>
   );
