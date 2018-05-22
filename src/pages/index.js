@@ -8,12 +8,16 @@ import vpLogo from './vp-logo.svg';
 
 const Page = styled.div`
   height: 100vh;
-  padding-left: 300px;
-  padding-top: 150px;
   display: flex;
   flex-direction: column;
+  max-width: 962px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
+const Jumbotron = styled.div`
+  margin-top: 100px;
+`;
 const TypistHeader = styled(Typist)`
   font-size: 48px;
   max-width: 800px;
@@ -53,31 +57,24 @@ class IndexPage extends Component {
     return (
       <div>
         <Page>
-            <div>
+            <Jumbotron>
+              <Intro>Hi! I'm Vince.</Intro>
               <TypistHeader
                 avgTypingSpeed={40}
                 startDelay={1000}
                 onTypingDone={this.onHeaderTyped}
                 cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}
               >
-                <Intro>Hi!</Intro>
-                <Typist.Delay ms={500} />
-                <Intro> I'm Vince.</Intro>
-                <Typist.Delay ms={1500} />
-                <br/>
-                <Intro>I'm a full-stack developer,</Intro>
-                <Typist.Delay ms={1500} />
-                <br/>
                 <Intro>And I build websites</Intro>
-                <Typist.Backspace count={14} delay={1000} avgTypingSpeed={60}/>
+                <Typist.Backspace count={14} delay={1500} avgTypingSpeed={60}/>
                 <Intro>make videos</Intro>
-                <Typist.Backspace count={11} delay={1000} avgTypingSpeed={60}/>
+                <Typist.Backspace count={11} delay={1500} avgTypingSpeed={60}/>
                 <Intro>design interfaces.</Intro>
-                <Typist.Backspace count={20} delay={1000} avgTypingSpeed={60}/>
-                <Intro>a little bit of everything.</Intro>
+                <Typist.Backspace count={18} delay={1500} avgTypingSpeed={60}/>
+                <Intro>do a little bit of everything.</Intro>
                 
               </TypistHeader>
-            </div>
+            </Jumbotron>
             {this.state.renderMsg ? (
               <SubIntroBlock>
                 <TypistSubeader
