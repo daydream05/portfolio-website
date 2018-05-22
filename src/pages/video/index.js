@@ -7,21 +7,6 @@ import VideoItemList from '../../components/video/VideoItemList/VideoItemList';
 import { flattenEdgesIntoFieldsSlugArray } from '../../helpers/flattenEdgesIntoFieldsSlugArray';
 
 class SecondPage extends Component {
-  static contextTypes = {
-    setPosts: PropTypes.func,
-  }
-
-  constructor(props, context) {
-    super();
-
-    const posts = flattenEdgesIntoFieldsSlugArray(props.data.allContentfulVideo.edges);
-
-    console.log(posts);
-    // We're adding the photos to the parent in `layouts/index.js`
-    context.setPosts(posts || []);
-    console.log('hello it worked');
-  }
-  
   render() {
     return (
       <div>
