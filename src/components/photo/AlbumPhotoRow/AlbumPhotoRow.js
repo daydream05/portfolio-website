@@ -16,18 +16,22 @@ const Row = styled.div`
     margin-right: 0;
   }
 `;
-const AlbumPhotoRow = (props) => (
-  <Row>
-    {props.photos.map(photo => {
-      return (
-      <AlbumPhoto key={photo.id} photo={photo} />
-      );
-    })}
-  </Row>
-);
+const AlbumPhotoRow = (props) => {
+  return (
+    <Row>
+      {props.photos.map((photo, index) => {
+        let startingIndex = (props.key - 3);
+        return (
+          <AlbumPhoto key={photo.id} photo={photo} onClick={props.onPhotoClick}/>
+        );
+      })}
+    </Row>
+  );
+};
 
 export default AlbumPhotoRow;
 
 AlbumPhotoRow.propTypes = {
   photos: PropTypes.array.isRequired,
+  key: PropTypes.number.isRequired,
 }

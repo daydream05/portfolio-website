@@ -30,7 +30,7 @@ class AlbumPhoto extends Component {
 
     const { slug } = fields;
     return (
-      <Link
+      <a
         style = {{
           display: `block`,
           flex: `100%`,
@@ -38,7 +38,7 @@ class AlbumPhoto extends Component {
           maxWidth: 293,
           position: `relative`,
         }}
-        to={{ pathname: slug }}
+        onClick={this.props.onClick}
         onTouchStart={() => (touched = true)}
         onMouseEnter={() => {
           if (!touched) {
@@ -82,7 +82,7 @@ class AlbumPhoto extends Component {
           >
           </div>
         )}
-      </Link>
+      </a>
     );
   }
 }
@@ -101,6 +101,7 @@ AlbumPhoto.propTypes = {
       slug: PropTypes.string,
     })
   }).isRequired,
+  onClick: PropTypes.func.isRequired,
 }
 
 export default AlbumPhoto;
