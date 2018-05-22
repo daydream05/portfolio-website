@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
-import Link, { navigateTo } from "gatsby-link";
+import Link from "gatsby-link";
 import styled from 'styled-components';
 import HeartIcon from "react-icons/lib/fa/heart";
 
@@ -38,13 +38,7 @@ class AlbumPhoto extends Component {
           maxWidth: 293,
           position: `relative`,
         }}
-        to={{
-          pathname: slug,
-          state: { 
-            isInModal: true,
-            parentUrl: `/photo/instagram-photos/`,
-          }
-        }}
+        to={{ pathname: slug }}
         onTouchStart={() => (touched = true)}
         onMouseEnter={() => {
           if (!touched) {

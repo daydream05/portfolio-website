@@ -19,16 +19,6 @@ const AlbumContainer = styled.div`
   justify-content: center;
 `;
 class AlbumTemplate extends Component {
-  static contextTypes = {
-    setPosts: PropTypes.func,
-  }
-
-  constructor(props, context) {
-    super();
-    // We're adding the photos to the parent in `layouts/index.js`
-    context.setPosts(props.data.contentfulPhotoAlbumDuplicate.albumPhotos || []);
-  }
-
   render() {
     const albumName = this.props.data.contentfulPhotoAlbumDuplicate.albumName;
     const albumCover = this.props.data.contentfulPhotoAlbumDuplicate.albumCover.resolutions;

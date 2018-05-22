@@ -27,13 +27,7 @@ const VideoItemList = ({ videos, parentUrl }) => {
         return ( 
           <ListItem key={video.node.id}>
           <NoDecorationLink
-            to={{
-              pathname: video.node.fields.url,
-              state: {
-                isInModal: true,
-                parentUrl: parentUrl,
-              }
-            }}
+            to={{ pathname: video.node.fields.url }}
           >
             <VideoItem 
               title={video.node.title} 
