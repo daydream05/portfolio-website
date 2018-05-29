@@ -108,6 +108,7 @@ class AlbumTemplate extends Component {
           <AlbumColumn>
             <StackGrid
               columnWidth={293}
+              columngutter={100}
             >
               {albumPhotos.map((photo, index) => {
                 return(

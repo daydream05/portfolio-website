@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import StackGrid from 'react-stack-grid';
 import { Banner } from '../../components/Banner/Banner';
+import PageContainer from '../../components/PageContainer/PageContainer';
 
 const CardContainer = styled.div`
   color: rgba(0, 0, 0, .75);
@@ -15,7 +17,7 @@ const CardContainer = styled.div`
 `;
 const CardImageBlock = styled.div`
   width: 100%;
-  max-height: 300px;
+  height: 150px;
   background-color: #D8D8D8;
   overflow: hidden;
 
@@ -41,21 +43,38 @@ const CardContent = styled.div`
 `;
 
 const Card = () => (
-  <div>
+  <PageContainer>
     <Banner title="Blog" />
-    <CardContainer>
-      <CardImageBlock>
-      </CardImageBlock>
-      <CardContent>
-        <CardTitle>Insert Title Here</CardTitle>
-        <CardDescription>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod 
-          tincidunt ut laoreet dolore magna 
-          aliquam erat volutpat.
-        </CardDescription>
-      </CardContent>
-    </CardContainer>
-  </div>
+    <StackGrid
+      columnWidth={300}
+      columngutter={100}
+    >
+      <CardContainer>
+        <CardImageBlock>
+        </CardImageBlock>
+        <CardContent>
+          <CardTitle>Insert Title Here</CardTitle>
+          <CardDescription>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+            tincidunt ut laoreet dolore magna
+            aliquam erat volutpat.
+          </CardDescription>
+        </CardContent>
+      </CardContainer>
+      <CardContainer>
+        <CardImageBlock style={{ height: '400px' }}>
+        </CardImageBlock>
+        <CardContent>
+          <CardTitle>Insert Title Here</CardTitle>
+          <CardDescription>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+            tincidunt ut laoreet dolore magna
+            aliquam erat volutpat.
+          </CardDescription>
+        </CardContent>
+      </CardContainer>
+    </StackGrid>
+  </PageContainer>
 );
 
 export default Card;

@@ -37,6 +37,7 @@ class AlbumPhoto extends Component {
           width: `100%`,
           maxWidth: 293,
           position: `relative`,
+          cursor: `pointer`,
         }}
         onClick={this.props.onClick}
         onTouchStart={() => (touched = true)}

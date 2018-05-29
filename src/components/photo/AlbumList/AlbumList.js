@@ -16,7 +16,7 @@ const AlbumList = (props) => {
         console.log(album);
         const albumDescription = album.node.albumDescription.internal.content;
         const albumName = album.node.albumName;
-        const albumCover = album.node.albumCover.resolutions.src;
+        const albumCover = album.node.albumCover;
         const albumLink = album.node.fields.slug;
         return (
           <Link

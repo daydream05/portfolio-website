@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Img from "gatsby-image";
 
 const Card = styled.div`
   display: flex;
@@ -8,7 +9,7 @@ const Card = styled.div`
   width: 300px;
 `;
 
-const CardImage = styled.img`
+const CardImage = styled(Img)`
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -25,7 +26,8 @@ const CardDescription = styled.p`
 `;
 const Album = (props) => (
   <Card>
-    <CardImage src={props.image}/>
+    {console.log(props.image)}
+    <CardImage sizes={props.image.sizes} />
     <CardDescription>
       {props.description}
     </CardDescription>
@@ -33,7 +35,7 @@ const Album = (props) => (
 );
 
 Album.propTypes = {
-  image: PropTypes.string,
+  image: PropTypes.object,
   description: PropTypes.string,
 }
 

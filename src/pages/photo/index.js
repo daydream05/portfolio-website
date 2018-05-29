@@ -23,11 +23,8 @@ export const albumQuery = graphql`
         node {
           albumName
           albumCover {
-            resolutions {
-              width
-              height
-              src
-              srcSet
+            sizes {
+              ...GatsbyContentfulSizes_withWebp
             }
           }
           albumDescription {

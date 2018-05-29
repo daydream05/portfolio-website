@@ -6,8 +6,7 @@ import './index.css';
 import mixedLogo from './vp-logo-mixed.svg';
 import vpLogo from './vp-logo.svg';
 
-const Page = styled.div`
-  height: 100vh;
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 962px;
@@ -54,9 +53,24 @@ class IndexPage extends Component {
   }
 
   render() {
+    let options = {
+      activeClass: 'active', // the class that is appended to the sections links
+      anchors: ['firstPage'], // the anchors for each sections
+      arrowNavigation: true, // use arrow keys
+      className: 'SectionContainer', // the class name for the section container
+      delay: 500, // the scroll animation speed
+      navigation: false, // use dots navigatio
+      scrollBar: false, // use the browser default scrollbar
+      sectionClassName: 'Section', // the section class name
+      sectionPaddingTop: '0', // the section top padding
+      sectionPaddingBottom: '0', // the section bottom padding
+      verticalAlign: false // align the content of each section vertical
+    };
+
     return (
       <div>
-        <Page>
+        <section>
+          <Container>
             <Jumbotron>
               <Intro>Hi! I'm Vince.</Intro>
               <TypistHeader
@@ -85,7 +99,8 @@ class IndexPage extends Component {
                 </TypistSubeader>
               </SubIntroBlock>
             ) : null }
-        </Page>
+          </Container>
+        </section>
       </div>
     );
   }
