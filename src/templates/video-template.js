@@ -47,7 +47,6 @@ const VideoTemplate = ({ data }) => {
         <Article 
           html={article.childMarkdownRemark.html}
           title={title}
-          videoLink={link}
           shortDescription={shortDescription}
         />
       </section>

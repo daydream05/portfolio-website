@@ -36,6 +36,9 @@ const Title = styled.h1`
   margin: 32px 0 16px;
 `;
 
+const Date = styled.span`
+`;
+
 
 /**
  * TODO: 
@@ -44,12 +47,14 @@ const Title = styled.h1`
 const Article = ({ 
     html,
     title,
+    date,
     shortDescription
   }) => (
   <ArticleContainer>
     <StyledArticle>
       <Header>
         <Title>{title}</Title>
+        <Date>{date}</Date>
         <Description>{shortDescription}</Description>
       </Header>
       <div dangerouslySetInnerHTML={{ __html: html }} />
@@ -57,4 +62,17 @@ const Article = ({
   </ArticleContainer>
 );
 
+Article.propTypes = {
+  html: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  shortDescription: PropTypes.string,
+  date: PropTypes.string,
+}
+
+Article.defaultProps = {
+  shortDescription: null,
+  date: null,
+}
+
 export default Article;
+

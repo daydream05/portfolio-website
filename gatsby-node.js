@@ -43,6 +43,19 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
   if (node.internal.type === `ContentfulVideo`) {
     const pageUrl = `/video/${node.slug}/`;
 
+    console.log('this happened');
+
+    createNodeField({
+      node,
+      name: `url`,
+      value: pageUrl,
+    });
+  }
+
+  // This if for adding a client url to a blog post
+  if (node.internal.type === `ContentfulBlogPost`) {
+    const pageUrl = `/blog/${node.slug}/`;
+
     createNodeField({
       node,
       name: `url`,
@@ -161,6 +174,41 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           });
         });
       });
+    }).then(() => {
+      graphql(
+        `{
+          allContentfulBlogPost {
+            edges {
+              node {
+                id
+                fields {
+                  url
+                }
+              }
+            }
+          }
+        }`
+      ).then(result => {
+        if (result.errors) {
+          reject(result.errors);
+        }
+
+        console.log(result);
+
+        const template = path.resolve('./src/templates/blogpost-template.js');
+        _.each(result.data.allContentfulBlogPost.edges, edge => {
+          const pageUrl = edge.node.fields.url;
+
+          createPage({
+            path: pageUrl,
+            component: slash(template),
+            context: {
+              id: edge.node.id,
+              url: pageUrl,
+            }
+          })
+        })
+      })
     })
     resolve();
   });
