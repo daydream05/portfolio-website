@@ -24,6 +24,7 @@
     "mousetrap": "^1.6.1",
     "normalize.css": "^8.0.0",
     "prop-types": "^15.6.1",
+    "react-fullpage": "git+https://github.com/daydream05/react-fullpage.git",
     "react-helmet": "^5.2.0",
     "react-icons": "^2.2.7",
     "react-images": "^0.5.17",
