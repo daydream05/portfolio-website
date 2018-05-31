@@ -27,6 +27,7 @@ const NavbarItem = styled.li`
 
 const NavbarLinks = () => (
     <RowList>
+      <NavbarItem><Link to="/">HOME</Link></NavbarItem>
       <NavbarItem><Link to="/design/">DESIGN</Link></NavbarItem>
       <NavbarItem><Link to="/photo/">PHOTOS</Link></NavbarItem>
       <NavbarItem><Link to="/web/">WEB</Link></NavbarItem>

@@ -18,7 +18,7 @@
     "gatsby-plugin-styled-components": "^2.0.11",
     "gatsby-plugin-typography": "^1.7.18",
     "gatsby-source-contentful": "^1.3.44",
-    "gatsby-transformer-remark": "^1.7.39",
+    "gatsby-transformer-remark": "^1.7.41",
     "gatsby-transformer-sharp": "^1.6.22",
     "lodash": "^4.17.5",
     "mousetrap": "^1.6.1",
