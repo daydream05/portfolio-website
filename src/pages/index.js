@@ -94,7 +94,7 @@ class IndexPage extends Component {
                 <TypistSubeader
                   startDelay={1000}
                 >
-                  <SubIntro>Feel free to check out my work before I start adding a paywall </SubIntro>
+                  <SubIntro>Feel free to check out my work and things I write about </SubIntro>
                   <span>🙃</span>
                 </TypistSubeader>
               </SubIntroBlock>
