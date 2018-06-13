@@ -39,8 +39,9 @@ const Content = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 400px;
   z-index: 1;
+  text-align: center;
+  padding: 0 24px;
 `;
 
 const Header = styled.header`
@@ -48,9 +49,12 @@ const Header = styled.header`
 `;
 
 const HeaderTitle = styled.h1`
-   font-style: italic;
-   color: #fff;
-   font-size: 64px;
+  font-style: italic;
+  color: #fff;
+  font-size: 36px;
+  @media(min-width : 750 px) {
+    font-size: 64px;
+  }
 `;
 
 const Description = styled.p`

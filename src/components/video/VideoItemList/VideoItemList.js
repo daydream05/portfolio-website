@@ -18,7 +18,7 @@ const List = styled.ul`
   margin: 0;
 `;
 
-const VideoItemList = ({ videos, parentUrl }) => {
+const VideoItemList = ({ videos }) => {
 
   return (
     <List>
