@@ -52,7 +52,7 @@ const HeaderTitle = styled.h1`
   font-style: italic;
   color: #fff;
   font-size: 36px;
-  @media(min-width : 750 px) {
+  @media(min-width: 750px) {
     font-size: 64px;
   }
 `;
