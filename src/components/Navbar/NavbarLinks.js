@@ -18,9 +18,10 @@ const NavbarItem = styled.li`
   a {
     font-weight: 700;
     text-decoration: none;
+    color: #404040;
 
     :visited {
-      color: inherit;
+      color: #404040;
     }
   }
 `;
@@ -29,11 +30,9 @@ const NavbarLinks = () => (
     <RowList>
       <NavbarItem><Link to="/">HOME</Link></NavbarItem>
       <NavbarItem><Link to="/design/">DESIGN</Link></NavbarItem>
-      <NavbarItem><Link to="/photo/">PHOTOS</Link></NavbarItem>
       <NavbarItem><Link to="/web/">WEB</Link></NavbarItem>
       <NavbarItem><Link to="/video/">VIDEOS</Link></NavbarItem>
       <NavbarItem><Link to="/blog/">BLOG</Link></NavbarItem>
-      <NavbarItem><Link to="/about/">ABOUT</Link></NavbarItem>
     </RowList>
 );
 

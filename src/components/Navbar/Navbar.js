@@ -1,7 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import NavbarLinks from './NavbarLinks';
+import { media } from '../../utils/media'
 
+const NavContainer = styled.div`
+  display: none;
+
+  ${media.desktop`
+    display: block;
+  `}
+`
 const Nav = styled.nav`
   display: flex;
   justify-content: center;
@@ -14,9 +22,11 @@ const Nav = styled.nav`
 `;
 
 const Navbar = () => (
-  <Nav>
-    <NavbarLinks />
-  </Nav>
+  <NavContainer>
+    <Nav>
+      <NavbarLinks />
+    </Nav>
+  </NavContainer>
 );
 
 export default Navbar;

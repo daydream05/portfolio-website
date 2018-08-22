@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import normalize from 'normalize.css';
 import Navbar from '../components/Navbar/Navbar';
 import './index.css';
+import MobileMenu from '../components/MobileMenu/MobileMenu';
 
 
 
@@ -34,6 +35,7 @@ class TemplateWrapper extends Component {
         </Helmet>
         <LayoutPage>
           <Navbar />
+          <MobileMenu />
           <PageContent>
             {this.props.children()}
           </PageContent>
