@@ -2,11 +2,23 @@ import React from 'react'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
 
-import { Container } from '../components/StyledComponents'
+import { Container, SubTitle } from '../components/StyledComponents'
 
-const CardContainer = styled.article`
+import { media } from '../utils/media';
+
+const Card = styled.article`
   width: 100%;
   height: 375px;
+  background: #141618;
+
+  ${media.phablet`
+    height: inherit;
+  `}
+  ${media.desktop`
+    height: 100%;
+    border-right: 1px solid #505055;
+    border-bottom: 1px solid #505055;
+  `}
 `
 const ImgContainer = styled.div`
   position: relative;
@@ -35,11 +47,17 @@ const ProjectCardTitle = styled.h5`
   letter-spacing: 0;
   line-height: 30px;
 `
-
+const ProjectCardSubTitle = styled(SubTitle)`
+`
 const ProjectCardCategory = styled.span`
   margin-top: 2rem;
   font-size: 14px;
   opacity: 0.8;
+`
+const ProjectCardContainer = styled(Container)`
+  ${media.desktop`
+    padding: 2rem 1rem;
+  `}
 `
 
 const FeaturedCard = (props) => {
@@ -71,29 +89,31 @@ const FeaturedCard = (props) => {
   `
 
   return (
-    <CardContainer>
+    <Card>
       <BgImg fluid={props.image.fluid} />
       <FeaturedContentContainer>
         <Title>{props.title}</Title>
         <SubTitle>{props.subTitle}</SubTitle>
       </FeaturedContentContainer>
-    </CardContainer>
+    </Card>
   )
 }
+
 
 const ProjectCard = (props) => {
   return (
       props.featured ? 
         <FeaturedCard {...props} /> :
-        <CardContainer>
+        <Card>
           <ImgContainer>
             <ProjectImg fluid={props.image.fluid} />
           </ImgContainer>
-          <Container>
+          <ProjectCardContainer>
             <ProjectCardTitle>{props.title}</ProjectCardTitle>
+            {props.subTitle && <ProjectCardSubTitle>{props.subTitle}</ProjectCardSubTitle>}
             <ProjectCardCategory>{props.category}</ProjectCardCategory>
-          </Container>
-        </CardContainer>
+          </ProjectCardContainer>
+        </Card>
   )
 }
 

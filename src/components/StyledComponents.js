@@ -24,6 +24,11 @@ export const FullHeight = styled.div `
   height: 100vh;
 `
 
+export const Section = styled.section`
+  ${media.desktop`
+    padding-bottom: 8rem;
+  `}
+`
 export const SectionTitle = styled.h2 `
   font-size: 28px;
   color: ${props => props.theme.colors.white};

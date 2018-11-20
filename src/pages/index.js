@@ -11,6 +11,7 @@ import {
   Background,
   Container,
   SubTitle,
+  Section,
   SectionTitle
 } from '../components/StyledComponents'
 
@@ -118,7 +119,7 @@ const ServicesSection = () => {
     `}
   `
   return (
-    <section>
+    <Section>
       <Container>
         <TitleGroup>
           <ServiceTitle>My area of expertise</ServiceTitle>
@@ -133,25 +134,66 @@ const ServicesSection = () => {
           <SkillItem>Photography</SkillItem>
         </SkillsList>
       </Container>
-    </section>
+    </Section>
   )
 }
 
 const ProjectsSection = ({ projects }) => {
+  const Column = styled.div`
+    ${media.desktop`
+      width: 50%;
+    `}
+  `
+
+  const NotFeatured = styled(Column)`
+    ${media.desktop`
+       display: flex;
+       flex-wrap: wrap;
+    `}
+  `
+
+  const ProjectList = styled.div`
+    ${media.desktop`
+      display: flex;
+    `}
+  `
   return (
     <section>
-      {projects.map(({ node }, index) => {
-        // const isFirst = index === 0
-        return (
-          <ProjectCard
-            key={node.id}
-            image={node.coverImage}
-            title={node.title}
-            category={'video'}
-            subTitle={node.shortDescription}
-          />
-        )
-      })}
+      <ProjectList>
+        {projects.map(({ node }, index) => {
+          const isFirst = index === 0
+
+          if (isFirst) {
+            return (
+              <Column key={node.id}>
+                <ProjectCard
+                  image={node.coverImage}
+                  title={node.title}
+                  category={'video'}
+                  subTitle={node.shortDescription}
+                />
+              </Column>
+            )
+          }
+        })}
+        <NotFeatured>
+          {projects.map(({ node }, index) => {
+            const isFirst = index === 0
+
+            if (!isFirst) {
+              return (
+                <Column key={node.id}>
+                  <ProjectCard
+                    image={node.coverImage}
+                    title={node.title}
+                    category={'video'}
+                  />
+                </Column>
+              )
+            }
+          })}
+        </NotFeatured>
+      </ProjectList>
     </section>
   )
 }

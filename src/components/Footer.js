@@ -98,7 +98,7 @@ const Footer = () => {
   const ContentBox = styled.div`
     position: absolute;
     z-index: 1;
-    height: 100%;
+    height: inherit;
     width: 100%;
 
     > div {
@@ -123,7 +123,7 @@ const Footer = () => {
   `
 
   return (
-    <section>
+    <footer>
       <FullHeight>
         <ContentBox>
           <Container>
@@ -158,7 +158,7 @@ const Footer = () => {
             return (<BackgroundImg fluid={fluid} alt={title}/>)
         }}/>
       </FullHeight>
-    </section>
+    </footer>
   )
 }
 
