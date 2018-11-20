@@ -7,7 +7,7 @@ import CaretLeft from "react-icons/lib/fa/caret-left";
 import Close from "react-icons/lib/md/close";
 import findIndex from "lodash/findIndex";
 import mousetrap from "mousetrap";
-import { navigateTo } from "gatsby-link";
+import { navigate } from "gatsby";
 
 
 const ContentContainer = styled.div`
@@ -57,7 +57,7 @@ class PostsModal extends Component  {
       } else {
         nextPost = posts[currentIndex + 1]
       }
-      navigateTo({
+      navigate({
         pathname: `${nextPost.fields.slug}`,
         state: {
           isInModal: true,
@@ -83,7 +83,7 @@ class PostsModal extends Component  {
         // goes to the previous slot on the array
         previousPost = posts[currentIndex - 1]
       }
-      navigateTo({
+      navigate({
         pathname: previousPost.fields.slug,
         state: {
           isInModal: true,
@@ -97,7 +97,7 @@ class PostsModal extends Component  {
     return (
       <Modal
         isOpen={this.props.isOpen}
-        onRequestClose={() => navigateTo('/photo/instagram-photos/')}
+        onRequestClose={() => navigate('/photo/instagram-photos/')}
         style={{
           overlay: {
             position: `fixed`,
@@ -124,7 +124,7 @@ class PostsModal extends Component  {
         contentLabel="Modal"
       >
         <div
-          onClick={() => navigateTo('/photo/instagram-photos/')}
+          onClick={() => navigate('/photo/instagram-photos/')}
           style={{
             display: `flex`,
             position: `relative`,
@@ -169,7 +169,7 @@ class PostsModal extends Component  {
             />
           </div>
           <Close
-            onClick={() => navigateTo('/photo/instagram-photos/')}
+            onClick={() => navigate('/photo/instagram-photos/')}
             css={{
               cursor: `pointer`,
               color: `rgba(255,255,255,0.8)`,

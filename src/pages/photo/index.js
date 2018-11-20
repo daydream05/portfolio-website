@@ -1,16 +1,19 @@
-import React from 'react';
-import AlbumList from '../../components/photo/AlbumList/AlbumList';
-import { Banner } from '../../components/Banner/Banner';
+import React from 'react'
+
+import Layout from '../../components/Layout'
+
+import AlbumList from '../../components/photo/AlbumList/AlbumList'
+import { Banner } from '../../components/Banner/Banner'
 
 const PhotoPage = ({ data }) => {
   console.log(data);
   return (
-    <div>
+    <Layout>
         <Banner title="Photos" />
        <AlbumList 
           albums={data.allContentfulPhotoAlbumDuplicate.edges}
        />
-    </div>
+    </Layout>
   );
 }
 
@@ -23,8 +26,8 @@ export const albumQuery = graphql`
         node {
           albumName
           albumCover {
-            sizes {
-              ...GatsbyContentfulSizes_withWebp
+            fluid {
+              ...GatsbyContentfulFluid_withWebp
             }
           }
           albumDescription {

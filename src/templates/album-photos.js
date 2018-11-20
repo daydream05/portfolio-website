@@ -80,7 +80,7 @@ class AlbumTemplate extends Component {
 
   render() {
     const albumName = this.props.data.contentfulPhotoAlbumDuplicate.albumName;
-    const albumCover = this.props.data.contentfulPhotoAlbumDuplicate.albumCover.resolutions;
+    const albumCover = this.props.data.contentfulPhotoAlbumDuplicate.albumCover.fluid;
     const albumDescription = this.props.data.contentfulPhotoAlbumDuplicate.albumDescription.internal.content;
     const albumPhotos = this.props.data.contentfulPhotoAlbumDuplicate.albumPhotos || []
 
@@ -88,9 +88,9 @@ class AlbumTemplate extends Component {
 
     const LIGHTBOXIMAGES = albumPhotos.map(photo => {
       return {
-        src: photo.sizes.src,
+        src: photo.fluid.src,
         caption: photo.title,
-        srcSet: photo.sizes.srcSet.split(','),
+        srcSet: photo.fluid.srcSet.split(','),
         alt: photo.title,
       }
     });
@@ -101,7 +101,7 @@ class AlbumTemplate extends Component {
       <AlbumTemplateContainer>
         <div style={{ overflow: 'auto'}}>
           <h1>{albumName}</h1>
-          <Img resolutions={albumCover} alt={albumName}/>
+          <Img fluid={albumCover} alt={albumName}/>
           <p>{albumDescription}</p>
         </div>
         <AlbumContainer>
@@ -142,8 +142,8 @@ export const pageQuery = graphql`
     contentfulPhotoAlbumDuplicate(id: { eq: $id }) {
       albumName
       albumCover {
-        resolutions(width: 293, height: 293) {
-          ...GatsbyContentfulResolutions
+        fluid(width: 293, height: 293) {
+          ...GatsbyContentfulFluid
         }
       }
       albumDescription {

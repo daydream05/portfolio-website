@@ -10,7 +10,7 @@ class PhotoTemplate extends Component {
       <div
         style={{ display: "block", width: "100%" }}
       >
-        <Img alt={data.contentfulAsset.title} sizes={data.contentfulAsset.sizes}/>
+        <Img alt={data.contentfulAsset.title} fluid={data.contentfulAsset.fluid}/>
       </div>
     );
   }
@@ -21,8 +21,8 @@ export default PhotoTemplate;
 export const photoQuery = graphql`
   query photoQuery($id: String!) {
     contentfulAsset(id: { eq: $id }) {
-      sizes {
-        ...GatsbyContentfulSizes
+      fluid {
+        ...GatsbyContentfulFluid
       }
       title
     }

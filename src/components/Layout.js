@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import styled from 'styled-components';
 import normalize from 'normalize.css';
 import Navbar from '../components/Navbar/Navbar';
-import './index.css';
+import './Layout.css';
 import MobileMenu from '../components/MobileMenu/MobileMenu';
 
 
@@ -37,7 +37,7 @@ class TemplateWrapper extends Component {
           <Navbar />
           <MobileMenu />
           <PageContent>
-            {this.props.children()}
+            {this.props.children}
           </PageContent>
         </LayoutPage>
       </div>

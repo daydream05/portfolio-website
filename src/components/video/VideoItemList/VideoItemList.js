@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby'
 import VideoItem from '../VideoItem/VideoItem';
 
 const ListItem = styled.li`
@@ -47,8 +47,8 @@ export default VideoItemList;
 export const VideoItemListFragment = graphql`
   fragment VideoItemListFragment on ContentfulVideo {
     coverImage {
-      sizes(maxWidth: 1440) {
-        ...GatsbyContentfulSizes
+      fluid(maxWidth: 1440) {
+        ...GatsbyContentfulFluid
       }
     }
     id

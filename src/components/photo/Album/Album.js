@@ -27,7 +27,7 @@ const CardDescription = styled.p`
 const Album = (props) => (
   <Card>
     {console.log(props.image)}
-    <CardImage sizes={props.image.sizes} />
+    <CardImage fluid={props.image.fluid} />
     <CardDescription>
       {props.description}
     </CardDescription>

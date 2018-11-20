@@ -1,5 +1,5 @@
 import React from "react";
-import { default as GatsbyLink } from 'gatsby-link'
+import { Link as GatsbyLink } from 'gatsby'
 import styled from "styled-components"
 
 const Link = styled(GatsbyLink)`
@@ -40,10 +40,10 @@ const MenuSelection = ({ close }) => (
         <Link to="/" >Home</Link>
       </MenuItem>
       <MenuItem onClick={close}>
-        <Link to="/video/" exact>Videos</Link>
+        <Link to="/video/">Videos</Link>
       </MenuItem> 
       <MenuItem onClick={close}>
-        <Link to="/blog/" exaact>Blog</Link>
+        <Link to="/blog/">Blog</Link>
       </MenuItem>
     </MenuList>
   </Menu>

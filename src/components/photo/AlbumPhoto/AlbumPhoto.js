@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
-import Link from "gatsby-link";
+import { Link } from 'gatsby'
 import styled from 'styled-components';
 import HeartIcon from "react-icons/lib/fa/heart";
 
@@ -23,7 +23,7 @@ class AlbumPhoto extends Component {
 
   render() {
     const {
-      sizes,
+      fluid,
       title,
       fields,
     } = this.props.photo;
@@ -61,7 +61,7 @@ class AlbumPhoto extends Component {
           }}
         >
           <StyledImg
-            sizes={sizes} 
+            fluid={fluid} 
             alt={title} 
           />
         </div>
@@ -91,12 +91,12 @@ class AlbumPhoto extends Component {
 AlbumPhoto.propTypes = {
   photo: PropTypes.shape({
     title: PropTypes.string,
-    sizes: PropTypes.shape({
+    fluid: PropTypes.shape({
       base64: PropTypes.string,
       aspectRatio: PropTypes.integer,
       src: PropTypes.string,
       srcSet: PropTypes.string,
-      sizes: PropTypes.string,
+      fluid: PropTypes.string,
       }).isRequired,
     fields: PropTypes.shape({
       slug: PropTypes.string,
@@ -109,8 +109,8 @@ export default AlbumPhoto;
 
 export const albumPhotoFragment = graphql`
   fragment AlbumPhotoFragment on ContentfulAsset {
-    sizes(maxWidth: 293, maxHeight: 293) {
-      ...GatsbyContentfulSizes
+    fluid(maxWidth: 293, maxHeight: 293) {
+      ...GatsbyContentfulFluid
     }
     fields {
       slug

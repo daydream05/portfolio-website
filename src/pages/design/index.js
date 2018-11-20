@@ -1,12 +1,15 @@
 import React from 'react';
+
+import Layout from '../../components/Layout'
+
 import DesignItem from '../../components/design/DesignItem/DesignItem';
 import { Banner } from '../../components/Banner/Banner';
 
 const Design = () => (
-  <div>
+  <Layout>
     <Banner title="Design" />
     <DesignItem />
-  </div>
+  </Layout>
 );
 
 export default Design;

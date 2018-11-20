@@ -15,7 +15,7 @@ const BlogPostTemplate = ({ data }) => {
   return (
     <div>
       <ArticleBanner>
-        <Img sizes={data.contentfulBlogPost.coverPhoto.sizes} />
+        <Img fluid={data.contentfulBlogPost.coverPhoto.fluid} />
       </ArticleBanner>
       <section>
         <Article
@@ -33,8 +33,8 @@ export const BlogPostTemplateQuery = graphql`
     contentfulBlogPost(id: { eq: $id }) {
       title
       coverPhoto {
-        sizes {
-          ...GatsbyContentfulSizes_withWebp
+        fluid {
+          ...GatsbyContentfulFluid_withWebp
         }
       }
       content {

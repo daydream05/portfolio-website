@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import styled from 'styled-components';
 import Typist from 'react-typist';
 import './index.css';
 import mixedLogo from './vp-logo-mixed.svg';
 import vpLogo from './vp-logo.svg';
+
+import Layout from '../components/Layout'
 
 const Container = styled.div`
   display: flex;
@@ -68,7 +70,7 @@ class IndexPage extends Component {
     };
 
     return (
-      <div>
+      <Layout>
         <section>
           <Container>
             <Jumbotron>
@@ -101,7 +103,7 @@ class IndexPage extends Component {
             ) : null }
           </Container>
         </section>
-      </div>
+      </Layout>
     );
   }
 }
