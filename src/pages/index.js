@@ -1,24 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
-import { StaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
 
+import Footer from '../components/Footer'
 import Layout from '../components/Layout'
 
-import FacebookIcon from '../icons/facebook.svg'
-import TwitterIcon from '../icons/twitter.svg'
-import InstagramIcon from '../icons/instagram.svg'
-import YoutubeIcon from '../icons/youtube.svg'
+import ProjectCard from '../components/ProjectCard'
 
-const Background = styled.div`
-  background-color: ${props => props.theme.colors.primaryBackground};
-`
-
-const Container = styled.div `
-  padding: 24px 36px;
-  width: 100%;
-  height: 100%;
-`
+import {
+  Background,
+  Container,
+  SubTitle,
+  SectionTitle
+} from '../components/StyledComponents'
 
 const Hero = styled.div`
   height: 100vh;
@@ -29,7 +23,7 @@ const Hero = styled.div`
 const HeroContent = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 24px 36px;
+  padding: 48px 36px;
 `
 
 const Intro = styled.h1`
@@ -39,24 +33,8 @@ const Intro = styled.h1`
   color: ${props => props.theme.colors.white};
 `
 
-const SectionTitle = styled.h2`
-  font-size: 28px;
-  color: ${props => props.theme.colors.white};
-  letter-spacing: 0;
-  line-height: 60px;
-  margin: 1rem 0;
-`
-
-const SubTitle = styled.p`
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: 36px;
-  font-family: TeXGyreAdventor-Regular;
-  opacity: ${props => props.opacity};
-`
-
 const ButtonGroup = styled.div`
-  margin-top: 3rem;
+  margin-top: 8rem;
   align-self: center;
 `
 
@@ -75,10 +53,6 @@ const Button = styled.button`
   :focus {
     outline: 0;
   }
-`
-
-const FullHeight = styled.div`
-  height: 100vh;
 `
 
 const ServicesSection = () => {
@@ -109,104 +83,29 @@ const ServicesSection = () => {
   )
 }
 
-const CallToActionSection = () => {
-  const ActionTitle = styled(SectionTitle)`
-    font-size: 36px;
-    line-height: 55px;
-    max-width: 300px;
-  `
-
-  const ContactInfo = styled.div`
-    display: flex;
-    flex-direction: column;
-  `
-
-  const PhoneNumber = styled.a`
-    font-size: 24px;
-    letter-spacing: 0;
-    line-height: 30px;
-    margin-bottom: 18px;
-  `
-
-  const Email = styled(PhoneNumber)``
-
-  const Content = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 100%;
-    height: 100%;
-  `
-
-  const SocialIcons = styled.div`
-    display: flex;
-    justify-content: space-between;
-    padding: 0 7rem 1rem 0;
-
-    svg {
-      width: 24px;
-      height: 24px;
-    }
-  `
-  const BackgroundImg = styled(Img)`
-    width: 100%;
-    height: 100vh;
-    z-index: 0;
-    opacity: 0.5;
-  `
-
-  const ContentBox = styled.div`
-    position: absolute;
-    z-index: 1;
-    height: 100%;
-  `
-
+const ProjectsSection = ({ projects }) => {
   return (
     <section>
-      <FullHeight>
-        <ContentBox>
-          <Container>
-            <Content>
-              <ActionTitle>Let's work together</ActionTitle>
-              <SubTitle opacity={0.7}>You have an idea or business, I have an expertise in how to build a successful image on the internet. Let's discuss how to make it happen.</SubTitle>
-              <ContactInfo>
-                <PhoneNumber>937-434-9381</PhoneNumber>
-                <Email>ianparulan@gmail.com</Email>
-              </ContactInfo>
-              <SocialIcons>
-                <FacebookIcon />
-                <InstagramIcon />
-                <TwitterIcon />
-                <YoutubeIcon />
-              </SocialIcons>
-            </Content>
-          </Container>
-        </ContentBox>
-        <StaticQuery
-          query={graphql`
-            {
-              contentfulAsset(title: { eq: "beach dark" }) {
-                title
-                id
-                fluid(quality: 100) {
-                  ...GatsbyContentfulFluid_withWebp
-                }
-              }
-            }
-          `}
-          render={(data) => {
-            const { fluid, title } = data.contentfulAsset
-            return (
-              <BackgroundImg fluid={fluid} alt={title} />
-            )
-          }}
-        />
-      </FullHeight>
+      {projects.map(({ node }, index) => {
+        // const isFirst = index === 0
+        return (
+          <ProjectCard
+            key={node.id}
+            image={node.coverImage}
+            title={node.title}
+            category={'video'}
+            subTitle={node.shortDescription}
+          />
+        )
+      })}
     </section>
   )
 }
 
-const IndexPage = () => {
+
+const IndexPage = ({ data }) => {
+    const videos = data.allContentfulVideo.edges
+
     return (
       <Layout>
         <Background>
@@ -221,11 +120,32 @@ const IndexPage = () => {
                 </HeroContent>
             </Hero>
             <ServicesSection />
-            <CallToActionSection />
+            <ProjectsSection projects={videos} />
+            <Footer />
         </Background>
       </Layout>
     );
 }
 export default IndexPage;
+
+export const indexPageQuery = graphql`
+  query {
+    allContentfulVideo(limit: 5) {
+      edges {
+        node {
+          title
+          id
+          link
+          shortDescription
+          coverImage {
+            fluid {
+              ...GatsbyContentfulFluid_withWebp
+            }
+          }
+        }
+      }
+    }
+  }
+`
 
 
