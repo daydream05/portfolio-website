@@ -15,16 +15,37 @@ import TwitterIcon from '../icons/twitter.svg'
 import InstagramIcon from '../icons/instagram.svg'
 import YoutubeIcon from '../icons/youtube.svg'
 
+import { media } from '../utils/media'
+
 const Footer = () => {
   const ActionTitle = styled(SectionTitle)`
     font-size: 36px;
     line-height: 55px;
     max-width: 300px;
+
+    ${media.desktop`
+      font-size: 84px;
+      line-height: 90px;
+      max-width: 500px;
+      margin: 0;
+      width: 70%;
+    `}
+  `
+
+  const ActionSubTitle = styled(SubTitle)`
+    ${media.desktop`
+      width: 30%;
+      margin-left: auto;
+    `}
   `
 
   const ContactInfo = styled.div`
     display: flex;
     flex-direction: column;
+
+    ${media.desktop`
+      margin-bottom: 8rem;
+    `}
   `
 
   const PhoneNumber = styled.a`
@@ -42,6 +63,11 @@ const Footer = () => {
     justify-content: space-around;
     width: 100%;
     height: 100%;
+
+    ${media.desktop`
+      justify-content: flex-end;
+      padding-bottom: 4rem;
+    `}
   `
 
   const SocialIcons = styled.div`
@@ -53,6 +79,14 @@ const Footer = () => {
       width: 24px;
       height: 24px;
     }
+
+    ${media.desktop`
+      padding: 0;
+
+      svg {
+        margin-right: 2rem;
+      }
+    `}
   `
   const BackgroundImg = styled(Img)`
     width: 100%;
@@ -61,14 +95,31 @@ const Footer = () => {
     opacity: 0.5;
   `
 
-  const ContentBox = styled.div `
+  const ContentBox = styled.div`
     position: absolute;
     z-index: 1;
     height: 100%;
+    width: 100%;
 
     > div {
       height: 100%;
     }
+  `
+
+  const TitleGroup = styled.div`
+    ${media.desktop`
+      display: flex;
+    `}
+  `
+
+  const ContactGroup = styled.div`
+    ${media.desktop`
+      display: flex;
+      flex-direction: column;
+      align-self: flex-end;
+      justify-content: flex-start;
+      width: 30%;
+    `}
   `
 
   return (
@@ -77,10 +128,13 @@ const Footer = () => {
         <ContentBox>
           <Container>
             <Content>
-              <ActionTitle>Let's work together</ActionTitle>
-              <SubTitle opacity={0.7}>You have an idea or business, I have an expertise in how
-                to build a successful image on the internet. Let's discuss how to make it
-                happen.</SubTitle>
+              <TitleGroup>
+                <ActionTitle>Let's work together</ActionTitle>
+                <ActionSubTitle opacity={0.7}>You have an idea or business, I have an expertise in how
+                  to build a successful image on the internet. Let's discuss how to make it
+                happen.</ActionSubTitle>
+              </TitleGroup>
+              <ContactGroup>
               <ContactInfo>
                 <PhoneNumber>937-434-9381</PhoneNumber>
                 <Email>ianparulan@gmail.com</Email>
@@ -91,6 +145,7 @@ const Footer = () => {
                 <TwitterIcon/>
                 <YoutubeIcon/>
               </SocialIcons>
+              </ContactGroup>
             </Content>
           </Container>
         </ContentBox>
