@@ -31,6 +31,7 @@
     "react-images": "^0.5.19",
     "react-modal": "^3.6.1",
     "react-player": "^1.7.0",
+    "react-pose": "^4.0.2",
     "react-stack-grid": "^0.7.1",
     "react-typist": "^2.0.4",
     "react-typography": "^0.16.13",
