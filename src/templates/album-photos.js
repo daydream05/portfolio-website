@@ -142,7 +142,7 @@ export const pageQuery = graphql`
     contentfulPhotoAlbumDuplicate(id: { eq: $id }) {
       albumName
       albumCover {
-        fluid(width: 293, height: 293) {
+        fluid(maxWidth: 293, maxHeight: 293) {
           ...GatsbyContentfulFluid
         }
       }

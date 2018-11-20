@@ -27,12 +27,12 @@ const VideoItemList = ({ videos }) => {
         return ( 
           <ListItem key={video.node.id}>
           <NoDecorationLink
-            to={{ pathname: video.node.fields.url }}
+            to={video.node.fields.url}
           >
             <VideoItem 
               title={video.node.title} 
               description={video.node.shortDescription}
-              backgroundImageSrc={video.node.coverImage.sizes.src}
+              backgroundImageSrc={video.node.coverImage.fluid.src}
             />
           </NoDecorationLink>
           </ListItem>

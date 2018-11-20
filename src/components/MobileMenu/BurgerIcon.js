@@ -22,7 +22,7 @@ const Bar = styled.div`
   transition: 0.4s;
 `
 
-const Bar1 = Bar.extend`
+const Bar1 = styled(Bar)`
   ${props => props.isOpen ?
     `
       transform: rotate(-45deg) translate(-4px, 4px);
@@ -31,7 +31,7 @@ const Bar1 = Bar.extend`
     }
 `
 
-const Bar2 = Bar.extend`
+const Bar2 = styled(Bar)`
     ${props => props.isOpen ?
       `
         transform: none;
@@ -39,7 +39,7 @@ const Bar2 = Bar.extend`
       `
     : null}
 `
-const Bar3 = Bar.extend`
+const Bar3 = styled(Bar)`
   ${props => props.isOpen ?
     `
       transform: rotate(45deg) translate(-6px, -6px);

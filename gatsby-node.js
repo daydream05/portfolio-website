@@ -69,43 +69,6 @@ exports.createPages = ({ graphql, actions }) => {
 
   return new Promise((resolve, reject) => {
     // This for creating an album page
-    graphql(
-      `{
-        allContentfulPhotoAlbumDuplicate {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              id
-            }
-          }
-        }
-      }`
-    ).then( result => {
-      if (result.errors) {
-        console.log(result.errors);
-        reject(result.errors);
-      }
-
-      // We specify the template that we want to use for this specific page
-      const template = path.resolve('./src/templates/album-photos.js');
-      _.each( result.data.allContentfulPhotoAlbumDuplicate.edges, edge => {
-        createPage({
-          // Each page is required to have a `path` as well
-          // as a template component. The `context` is
-          // optional but is often necessary so the template
-          // can query data specific to each page.
-          path: edge.node.fields.slug,
-          component: slash(template),
-          context: {
-            // Data passed to context is available in page queries as GraphQL variables.
-            id: edge.node.id,
-            slug: edge.node.fields.slug,
-          }
-        })
-      })
-    }).then(() => {
       // This for creating a photo page
       graphql(
         `{
@@ -139,8 +102,7 @@ exports.createPages = ({ graphql, actions }) => {
             }
           });
         });
-      })
-    }).then(() => {
+      }).then(() => {
       // This is for creating a video page
       graphql(
         `{

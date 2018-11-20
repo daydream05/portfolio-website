@@ -35,7 +35,7 @@ const CardContent = styled.div`
 
 const Card = (props) => (
   <CardContainer>
-    <Img sizes={props.image} />
+    <Img fluid={props.image} />
     <CardContent>
       <CardTitle>{props.title}</CardTitle>
       <CardDescription>{props.excerpt}</CardDescription>
