@@ -6,7 +6,6 @@ import 'normalize.css'
 
 import theme from '../styles/theme'
 
-import Navbar from '../components/Navbar/Navbar';
 import './Layout.css';
 import MobileMenu from '../components/MobileMenu/MobileMenu';
 
@@ -34,7 +33,6 @@ class TemplateWrapper extends Component {
           </Helmet>
           <ThemeProvider theme={theme}>
             <LayoutPage>
-              <Navbar />
               <MobileMenu />
               <div>
                 {this.props.children}
