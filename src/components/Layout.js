@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import styled from 'styled-components';
-import normalize from 'normalize.css';
+import styled, { ThemeProvider } from 'styled-components';
+import 'normalize.css'
+
+import theme from '../styles/theme'
+
 import Navbar from '../components/Navbar/Navbar';
 import './Layout.css';
 import MobileMenu from '../components/MobileMenu/MobileMenu';
@@ -10,12 +13,8 @@ import MobileMenu from '../components/MobileMenu/MobileMenu';
 
 
 const LayoutPage = styled.div`
-  overflow: hidden;
-`;
-
-// So our page is always below our nav
-const PageContent = styled.div`
-  margin-top: 50px;
+  background-color: ${props => props.theme.colors.primaryBackground};
+  color: ${props => props.theme.colors.white};
 `;
 
 class TemplateWrapper extends Component {
@@ -30,23 +29,24 @@ class TemplateWrapper extends Component {
             { name: 'keywords', content: 'portfolio, projects' },
           ]}
         />
-        <Helmet>
-          <link rel="stylesheet" href="https://use.typekit.net/sbz7hal.css" />
-        </Helmet>
-        <LayoutPage>
-          <Navbar />
-          <MobileMenu />
-          <PageContent>
-            {this.props.children}
-          </PageContent>
-        </LayoutPage>
+          <Helmet>
+            <link rel="stylesheet" href="https://use.typekit.net/sbz7hal.css" />
+          </Helmet>
+          <ThemeProvider theme={theme}>
+            <LayoutPage>
+              <Navbar />
+              <MobileMenu />
+              <div>
+                {this.props.children}
+              </div>
+            </LayoutPage>
+          </ThemeProvider>
       </div>
     )
   }
 }
 
 TemplateWrapper.propTypes = {
-  children: PropTypes.func,
   location: PropTypes.shape({
     state: PropTypes.shape({
       isInModal: PropTypes.bool,

@@ -19,8 +19,8 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-react-next`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-react-svg`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {

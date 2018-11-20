@@ -3,9 +3,9 @@ import { css } from 'styled-components'
 
 const sizes = {
   hd: 1200,
-  desktop: 1000,
-  tablet: 750,
-  phablet: 550,
+  desktop: 992,
+  tablet: 768,
+  phablet: 576,
   mobile: 400,
   iPhone5: 300, // Seriously Apple?!
 }
