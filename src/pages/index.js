@@ -148,7 +148,7 @@ const ServicesSection = () => {
       <Container>
         <TitleGroup>
           <ServiceTitle>My area of expertise</ServiceTitle>
-          <ServiceSubTitle opacity={0.7}>Flexo empowers you to bring your vision to life by simply copying and pasting components. So you’re not just designing a responsive website — you create a unique experience.</ServiceSubTitle>
+          <ServiceSubTitle opacity={0.7}>These are the things that I've been doing a lot. I really enjoy doing them so I had no problem being a jack of all trades.</ServiceSubTitle>
         </TitleGroup>
         <SkillsList>
           <SkillItem>Web Development</SkillItem>
