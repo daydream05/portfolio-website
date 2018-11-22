@@ -39,6 +39,7 @@ const BarStyle = styled.span`
 `;
 
 const CloseBar1 = styled(BarStyle)`
+  display: none;
   height: 100%;
   width: 12px;
   position: absolute;
@@ -47,6 +48,7 @@ const CloseBar1 = styled(BarStyle)`
 `;
 
 const CloseBar2 = styled(BarStyle)`
+  display: none;
   position: absolute;
   top: 50%;
   margin-top: -6px;
@@ -68,22 +70,26 @@ const transition = {
 const PosedCloseBar1 = posed(ComponentCloseBar1)({
   closed: {
     y: "calc(-100% - 12px)",
-    transition
+    transition,
+    display: 'block',
   },
   open: {
     y: 0,
-    transition
+    transition,
+    display: 'none',
   }
 });
 
 const PosedCloseBar2 = posed(ComponentCloseBar2)({
   closed: {
     x: "calc(100% + 12px)",
-    transition
+    transition,
+    display: 'block',
   },
   open: {
     x: 0,
-    transition
+    transition,
+    display: 'none',
   }
 });
 
