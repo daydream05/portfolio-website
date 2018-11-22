@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import posed, { PoseGroup } from 'react-pose'
+
 import styled, { ThemeProvider } from 'styled-components';
 import 'normalize.css'
 
@@ -27,6 +29,21 @@ const WhiteLogo = styled(Logo)`
     left: 80px;
   `}
 `
+
+const FadeUp = posed.div({
+  enter: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 400,
+    }
+  },
+  exit: {
+    opacity: 0,
+    y: '30px'
+  }
+})
+
 const LayoutPage = styled.div`
   background-color: ${props => props.theme.colors.primaryBackground};
   color: ${props => props.theme.colors.white};
@@ -53,9 +70,13 @@ class TemplateWrapper extends Component {
                 <WhiteLogo />
               </Link>
               <BurgerMenu />
-              <div>
-                {this.props.children}
-              </div>
+              <PoseGroup animateOnMount>
+                <FadeUp key="fadeup">
+                  <div>
+                    {this.props.children}
+                  </div>
+                </FadeUp>
+              </PoseGroup>
               <Footer />
             </LayoutPage>
           </ThemeProvider>
