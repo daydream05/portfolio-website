@@ -10,7 +10,7 @@ import {
   Container
 } from '../components/StyledComponents'
 
-import FacebookIcon from '../icons/facebook.svg'
+import LinkedInIcon from '../icons/linkedin.svg'
 import TwitterIcon from '../icons/twitter.svg'
 import InstagramIcon from '../icons/instagram.svg'
 import YoutubeIcon from '../icons/youtube.svg'
@@ -124,40 +124,77 @@ const Footer = () => {
 
   return (
     <footer>
-      <FullHeight>
-        <ContentBox>
-          <Container>
-            <Content>
-              <TitleGroup>
-                <ActionTitle>Let's work together</ActionTitle>
-                <ActionSubTitle opacity={0.7}>You have an idea or business, I have an expertise in how
-                  to build a successful image on the internet. Let's discuss how to make it
-                happen.</ActionSubTitle>
-              </TitleGroup>
-              <ContactGroup>
-              <ContactInfo>
-                <PhoneNumber>937-434-9381</PhoneNumber>
-                <Email>ianparulan@gmail.com</Email>
-              </ContactInfo>
-              <SocialIcons>
-                <FacebookIcon/>
-                <InstagramIcon/>
-                <TwitterIcon/>
-                <YoutubeIcon/>
-              </SocialIcons>
-              </ContactGroup>
-            </Content>
-          </Container>
-        </ContentBox>
-        <StaticQuery
-          query={graphql` { 
-            contentfulAsset(title: { eq: "beach dark" }) { title id fluid(quality: 100) { ...GatsbyContentfulFluid_withWebp } } }
-            `}
-          render={(data) => {
-            const {fluid, title} = data.contentfulAsset
-            return (<BackgroundImg fluid={fluid} alt={title}/>)
-        }}/>
-      </FullHeight>
+      <StaticQuery
+        query={graphql`
+        { 
+          contentfulAsset(title: { eq: "beach dark" }) { 
+            title
+            id
+            fluid(quality: 100)
+              { 
+                ...GatsbyContentfulFluid_withWebp 
+              }
+            }
+          contentfulSocialMediaLinks {
+            twitter
+            linkedIn
+            instagram
+            youtube
+          }
+        }`}
+        render={(data) => {
+          const { fluid, title } = data.contentfulAsset
+          const { twitter, linkedIn, instagram, youtube } = data.contentfulSocialMediaLinks
+          return (
+            <FullHeight>
+              <ContentBox>
+                <Container>
+                  <Content>
+                    <TitleGroup>
+                      <ActionTitle>Let's work together</ActionTitle>
+                      <ActionSubTitle opacity={0.7}>If you'd like to work together, feel free to reach out.</ActionSubTitle>
+                    </TitleGroup>
+                    <ContactGroup>
+                    <ContactInfo>
+                      <Email>ianparulan@gmail.com</Email>
+                    </ContactInfo>
+                    <SocialIcons>
+                      <a
+                        href={linkedIn}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <LinkedInIcon />
+                      </a>
+                      <a
+                        href={instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <InstagramIcon />
+                      </a>
+                      <a
+                        href={twitter}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <TwitterIcon />
+                      </a>
+                      <a
+                        href={youtube}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <YoutubeIcon />
+                      </a>
+                    </SocialIcons>
+                    </ContactGroup>
+                  </Content>
+                </Container>
+              </ContentBox>
+              <BackgroundImg fluid={fluid} alt={title} />
+            </FullHeight>
+      )}}/>
     </footer>
   )
 }

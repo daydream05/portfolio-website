@@ -20,6 +20,7 @@ const Card = styled.article`
     border-bottom: 1px solid #505055;
   `}
 `
+
 const ImgContainer = styled.div`
   position: relative;
 
@@ -53,8 +54,15 @@ const ProjectCardCategory = styled.span`
   margin-top: 2rem;
   font-size: 14px;
   opacity: 0.8;
+  align-self: flex-end;
+  background-color: ${props => props.theme.colors.secondaryBackground};
+  padding: 2px 8px;
+  border-radius: 8px;
 `
 const ProjectCardContainer = styled(Container)`
+  display: flex;
+  flex-direction: column;
+
   ${media.desktop`
     padding: 2rem 1rem;
   `}
@@ -62,11 +70,21 @@ const ProjectCardContainer = styled(Container)`
 
 const FeaturedCard = (props) => {
   const BgImg = styled(Img)`
-    position: absolute !important;
+    position: absolute;
     width: 100%;
     height: inherit;
     object-fit: cover;
     object-position: center;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: inherit;
+      background-color: ${props => props.theme.colors.primaryBackground};
+      opacity: 0.5;
+    }
   `
 
   const Title = styled.h5`
@@ -74,11 +92,14 @@ const FeaturedCard = (props) => {
     color: #FFFFFF;
     letter-spacing: 0;
     line-height: 45px;
+    max-width: 300px;
+
   `
 
   const SubTitle = styled.p`
     opacity: 0.7;
-    font-size: 20px;
+    font-weight: 300;
+    font-size: 18px;
     color: #FFFFFF;
     letter-spacing: 0;
     line-height: 30px;
@@ -86,6 +107,9 @@ const FeaturedCard = (props) => {
   const FeaturedContentContainer = styled.div`
     position: absolute;
     padding: 3rem;
+    ${media.desktop`
+      transform: translateY(-100%);
+    `}
   `
 
   return (

@@ -1,9 +1,19 @@
 import styled from 'styled-components'
+import { Link as GatsbyLink} from 'gatsby'
 
 import { media } from '../utils/media'
 
 export const Background = styled.div `
   background-color: ${props => props.theme.colors.primaryBackground};
+`
+
+export const Link = styled(GatsbyLink)`
+  color: ${props => props.theme.colors.white};
+  text-decoration: none;
+  
+  :visited {
+    color: ${props => props.theme.colors.white};
+  }
 `
 
 export const Container = styled.div`

@@ -10,14 +10,22 @@ import Logo from '../icons/white-logo-iv.svg'
 import './Layout.css';
 import BurgerMenu from '../components/BurgerMenu'
 
+import { Link } from '../components/StyledComponents'
+import Footer from './Footer'
+
+import { media } from '../utils/media'
 
 const WhiteLogo = styled(Logo)`
-  position: fixed;
+  position: absolute;
   z-index: 1;
   top: 40px;
-  left: 80px;
+  left: 20px;
   height: 48px;
   width: 48px;
+
+  ${media.desktop`
+    left: 80px;
+  `}
 `
 const LayoutPage = styled.div`
   background-color: ${props => props.theme.colors.primaryBackground};
@@ -37,15 +45,18 @@ class TemplateWrapper extends Component {
           ]}
         />
           <Helmet>
-            <link rel="stylesheet" href="https://use.typekit.net/sbz7hal.css" />
+            <link rel="stylesheet" href="https://use.typekit.net/lrv4dvj.css" />
           </Helmet>
           <ThemeProvider theme={theme}>
             <LayoutPage>
-              <WhiteLogo />
+              <Link to="/">
+                <WhiteLogo />
+              </Link>
               <BurgerMenu />
               <div>
                 {this.props.children}
               </div>
+              <Footer />
             </LayoutPage>
           </ThemeProvider>
       </div>

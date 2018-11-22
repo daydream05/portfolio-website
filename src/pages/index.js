@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
 
-import Footer from '../components/Footer'
 import Layout from '../components/Layout'
 
 import ProjectCard from '../components/ProjectCard'
@@ -10,6 +9,7 @@ import ProjectCard from '../components/ProjectCard'
 import {
   Background,
   Container,
+  Link,
   SubTitle,
   Section,
   SectionTitle
@@ -17,22 +17,45 @@ import {
 
 import { media } from '../utils/media'
 
+import portrait from '../images/portrait.png'
+
 const Hero = styled.div`
   height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
+  overflow: hidden;
+  transform: translateZ(0);
 
   ${media.desktop`
     max-width: ${props => props.theme.sizes.maxWidth};
     margin: auto;
   `}
 `
+
+const HeroImg = styled.img`
+  position: absolute;
+  width: 100%;
+  transform: scale(2);
+  opacity: 0.5;
+  left: 10rem;
+
+  ${media.desktop`
+    opacity: 1;
+    width: 100%;
+    transform: none;
+    position: absolute;
+    left: -4rem;
+    height: auto;
+  `}
+`
+
 const HeroContent = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 48px 36px;
-  
+  padding: 4rem 36px 0;
+  z-index: 1;
+
   ${media.desktop`
     width: 50%;
     margin-left: auto;
@@ -52,8 +75,9 @@ const Intro = styled.h1`
 `
 
 const ButtonGroup = styled.div`
-  margin-top: 8rem;
+  margin-top: 4rem;
   align-self: center;
+  cursor: pointer;
 
   ${media.desktop`
     align-self: flex-start;
@@ -72,6 +96,7 @@ const Button = styled.button`
   width: 290px;
   display: flex;
   justify-content: center;
+  cursor: pointer;
 
   :focus {
     outline: 0;
@@ -159,6 +184,9 @@ const ProjectsSection = ({ projects }) => {
   `
   return (
     <section>
+      <Container>
+        <SectionTitle style={{ marginBottom: `3rem` }}>Recent projects</SectionTitle>
+      </Container>
       <ProjectList>
         {projects.map(({ node }, index) => {
           const isFirst = index === 0
@@ -166,12 +194,15 @@ const ProjectsSection = ({ projects }) => {
           if (isFirst) {
             return (
               <Column key={node.id}>
-                <ProjectCard
-                  image={node.coverImage}
-                  title={node.title}
-                  category={'video'}
-                  subTitle={node.shortDescription}
-                />
+                <Link to={`${node.fields.url}`}>
+                  <ProjectCard
+                    featured
+                    image={node.coverImage}
+                    title={node.title}
+                    category={'video'}
+                    subTitle={node.shortDescription}
+                  />
+                </Link>
               </Column>
             )
           }
@@ -183,11 +214,13 @@ const ProjectsSection = ({ projects }) => {
             if (!isFirst) {
               return (
                 <Column key={node.id}>
-                  <ProjectCard
-                    image={node.coverImage}
-                    title={node.title}
-                    category={'video'}
-                  />
+                  <Link to={node.fields.url}>
+                    <ProjectCard
+                      image={node.coverImage}
+                      title={node.title}
+                      category={'video'}
+                    />
+                  </Link>
                 </Column>
               )
             }
@@ -218,18 +251,21 @@ const IndexPage = ({ data }) => {
       <Layout>
         <Background>
             <Hero> 
+                <HeroImg src={portrait} />
                 <HeroContent>
                   <Intro>Hello there</Intro>
                   <HeroTitle>My name is Vince</HeroTitle>
-                  <HeroSubTitle>I am an aspiring web developer, videographer and entrepreneur based in NYC. I didn’t really know what to do so I just gave all those things a shot. Turns out, I enjoy all of them! </HeroSubTitle>
+                  <HeroSubTitle>I'm a web dev, videographer, and entrepreneur based in NYC.
+                    I made this site using GatsbyJS. It's still a work in progress but feel free to check out my current projects</HeroSubTitle>
                   <ButtonGroup>
-                    <Button>SEE MY PROJECTS</Button>
+                    <Link to="/video/">
+                      <Button>SEE MY PROJECTS</Button>
+                    </Link>
                   </ButtonGroup>
                 </HeroContent>
             </Hero>
             <ServicesSection />
             <ProjectsSection projects={videos} />
-            <Footer />
         </Background>
       </Layout>
     );
@@ -243,6 +279,9 @@ export const indexPageQuery = graphql`
         node {
           title
           id
+          fields {
+            url
+          }
           link
           shortDescription
           coverImage {

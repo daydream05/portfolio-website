@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
-import { Link } from 'gatsby'
+import { graphql } from 'gatsby'
+import styled from 'styled-components'
 
 import Layout from '../../components/Layout'
-
-import { Banner } from '../../components/Banner/Banner';
 import VideoItemList from '../../components/video/VideoItemList/VideoItemList';
+
+import { media } from '../../utils/media'
+
+const Title = styled.h1`
+  margin-top: 0;
+  text-align: center;
+  color: ${props => props.theme.colors.white};
+  padding: 2rem;
+  ${media.desktop``}
+`
 
 class SecondPage extends Component {
   render() {
     return (
       <Layout>
-        <Banner title="Videos"/>
+        <Title>Videos</Title>
         <VideoItemList videos={this.props.data.allContentfulVideo.edges} parentUrl={this.props.location.pathname} />
-        <Link to="/">Go back to the homepage</Link>
       </Layout>
     );
   }

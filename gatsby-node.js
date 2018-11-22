@@ -43,8 +43,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   if (node.internal.type === `ContentfulVideo`) {
     const pageUrl = `/video/${node.slug}/`;
 
-    console.log('this happened');
-
     createNodeField({
       node,
       name: `url`,

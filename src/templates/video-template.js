@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import ReactPlayer from 'react-player';
 import Article from '../components/Article/Article';
 
+import Layout from '../components/Layout'
 /**
  * This template is used for generating an individual video page.
  * Each video page is going to have it's own article written about it.
@@ -33,24 +34,26 @@ const VideoTemplate = ({ data }) => {
   } = video;
 
   return (
-    <Page>
-      <VideoSection>
-        <VideoBanner>
-          <ReactPlayer
-            url={link}
-            width="100%"
-            height="100%"
-          />    
-        </VideoBanner>
-      </VideoSection>
-      <section>
-        <Article 
-          html={article.childMarkdownRemark.html}
-          title={title}
-          shortDescription={shortDescription}
-        />
-      </section>
-    </Page>
+    <Layout>
+      <Page>
+        <VideoSection>
+          <VideoBanner>
+            <ReactPlayer
+              url={link}
+              width="100%"
+              height="100%"
+            />    
+          </VideoBanner>
+        </VideoSection>
+        <section>
+          <Article 
+            html={article.childMarkdownRemark.html}
+            title={title}
+            shortDescription={shortDescription}
+          />
+        </section>
+      </Page>
+    </Layout>
   );
 };
 

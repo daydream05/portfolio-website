@@ -1,5 +1,8 @@
 import React from 'react'
+import { PoseGroup } from 'react-pose'
+
 import BurgerIcon from './BurgerIcon'
+import SideBar from './SideBar'
 
 class BurgerMenu extends React.Component {
   state = {
@@ -14,7 +17,14 @@ class BurgerMenu extends React.Component {
 
   render() {
     const { isOpen } = this.state;
-    return <BurgerIcon isOpen={isOpen} onClick={this.handleClick}/>;
+    return (
+    <div>
+      <BurgerIcon isOpen={isOpen} onClick={this.handleClick}/>
+      <PoseGroup enterPose="open" preEnterPose="initial" exitPose="initial" flipMove={false}>
+        {isOpen && <SideBar isOpen={isOpen} key="sidebar" />}
+      </PoseGroup>
+    </div>
+    )
   }
 }
 
