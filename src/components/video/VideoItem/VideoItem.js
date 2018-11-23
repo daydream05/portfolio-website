@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Img from 'gatsby-image'
 import styled from 'styled-components';
 
-const VideoImageContainer = styled.article`
+const VideoImageContainer = styled.div`
   min-height: 400px;
   background-color: rgba(0,0,0, 0.75);
-  background-image: ${props => `url(${props.image})`};
   background-position: center center;
   background-size: cover;
   display: flex;
@@ -13,10 +13,19 @@ const VideoImageContainer = styled.article`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
   ::after {
     background-color: rgba(0,0,0. 0.15);
   }
 `;
+
+const VideoCover = styled(Img)`
+  position: absolute !important;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+`
 
 const VideoImageOverlay = styled.div`
   position: absolute;
@@ -48,7 +57,7 @@ const Header = styled.header`
   margin-bottom: 16px;
 `;
 
-const HeaderTitle = styled.h1`
+const HeaderTitle = styled.h2`
   font-style: italic;
   color: #fff;
   font-size: 36px;
@@ -63,8 +72,9 @@ const Description = styled.p`
 `;
 
 const VideoItem = (props) => (
-  <div>
-    <VideoImageContainer image={props.backgroundImageSrc}>
+  <article>
+    <VideoImageContainer>
+      <VideoCover fluid={props.image.fluid} alt={props.image.title}/>
         <Content>
           <Header>
             <HeaderTitle>{props.title}</HeaderTitle>
@@ -73,7 +83,7 @@ const VideoItem = (props) => (
         </Content>
         <VideoImageOverlay />
     </VideoImageContainer>
-  </div>
+  </article>
 );
 
 VideoItem.propTypes = {

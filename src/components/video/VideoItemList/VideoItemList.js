@@ -47,6 +47,7 @@ const VideoItemList = ({ videos }) => {
                     title={video.node.title}
                     description={video.node.shortDescription}
                     backgroundImageSrc={video.node.coverImage.fluid.src}
+                    image={video.node.coverImage}
                   />
                 </NoDecorationLink>
               </FadeUp>
@@ -63,8 +64,9 @@ export default VideoItemList;
 export const VideoItemListFragment = graphql`
   fragment VideoItemListFragment on ContentfulVideo {
     coverImage {
-      fluid(maxWidth: 1440) {
-        ...GatsbyContentfulFluid
+      title
+      fluid(maxWidth: 1440, quality: 100) {
+        ...GatsbyContentfulFluid_withWebp
       }
     }
     id
