@@ -30,7 +30,7 @@ const WhiteLogo = styled(Logo)`
   `}
 `
 
-const FadeUp = posed.div({
+const PageTransition = posed.div({
   enter: {
     opacity: 1,
     y: 0,
@@ -71,11 +71,11 @@ class TemplateWrapper extends Component {
               </Link>
               <BurgerMenu />
               <PoseGroup animateOnMount>
-                <FadeUp key="fadeup">
+                <PageTransition key="fadeup">
                   <div>
                     {this.props.children}
                   </div>
-                </FadeUp>
+                </PageTransition>
               </PoseGroup>
               <Footer />
             </LayoutPage>
