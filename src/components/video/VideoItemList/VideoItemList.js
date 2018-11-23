@@ -36,7 +36,6 @@ const VideoItemList = ({ videos }) => {
     <PoseGroup animateOnMount>
       <List key="list">
         {videos.map((video) => {
-          console.log(video);
           return (
             <ListItem key={video.node.id}>
               <FadeUp>

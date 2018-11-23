@@ -9,7 +9,6 @@ const FlexRow = styled.div`
 `;
 
 const AlbumList = (props) => {
-  console.log(props);
   return (
     <FlexRow>
       {props.albums.map((album) => {

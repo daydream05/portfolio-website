@@ -29,6 +29,3 @@ module.exports = {
     }
   ],
 };
-
-console.log('hello world');
-console.log(`${process.env.CONTENTFUL_SPACE_ID}`);

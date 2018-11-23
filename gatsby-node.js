@@ -35,8 +35,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       name: `slug`,
       value: pageSlug,
     })
-
-    console.log(node.fields);
   }
 
   // This is for adding a client url from the slug field
@@ -152,8 +150,6 @@ exports.createPages = ({ graphql, actions }) => {
         if (result.errors) {
           reject(result.errors);
         }
-
-        console.log(result);
 
         const template = path.resolve('./src/templates/blogpost-template.js');
         _.each(result.data.allContentfulBlogPost.edges, edge => {

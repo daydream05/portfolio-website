@@ -9,7 +9,6 @@ import Card from '../../components/Card/Card';
 import Layout from '../../components/Layout'
 
 const Blog = ({ data }) => {
-  console.log(data);
   return (
     <Layout>
       <PageContainer>

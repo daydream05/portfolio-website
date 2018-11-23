@@ -6,7 +6,6 @@ import AlbumList from '../../components/photo/AlbumList/AlbumList'
 import { Banner } from '../../components/Banner/Banner'
 
 const PhotoPage = ({ data }) => {
-  console.log(data);
   return (
     <Layout>
         <Banner title="Photos" />
